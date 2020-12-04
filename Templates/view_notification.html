@@ -1,0 +1,47 @@
+{% extends 'admin_page.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Income Detail</title>
+</head>
+<body>
+    <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">SINo</th>
+      <th scope="col">To</th>
+      <th scope="col">Notification</th>
+      <th scope="col">Time</th>
+
+<!--      <th scope="col">Update</th>-->
+<!--      <th scope="col">Delete</th>-->
+
+    </tr>
+  </thead>
+  <tbody>
+       {% for notification in notifications %}
+    <tr>
+
+        <td>{{forloop.counter}}</td>
+        <td>{{notification.to}}</td>
+        <td>{{notification.notification}}</td>
+        <td>{{notification.time}}</td>
+
+
+
+    </tr>
+        {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+
+
+</body>
+</html>
+
+{% endblock %}

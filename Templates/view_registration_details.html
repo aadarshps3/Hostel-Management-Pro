@@ -1,0 +1,47 @@
+{% extends 'admin_page.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Income Detail</title>
+</head>
+<body>
+    <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">SINo</th>
+      <th scope="col">Name</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Username</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+
+        <td>{{forloop.counter}}</td>
+
+
+
+
+
+
+    </tr>
+
+
+  </tbody>
+</table>
+
+
+
+
+
+</body>
+</html>
+
+{% endblock %}

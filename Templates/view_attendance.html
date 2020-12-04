@@ -1,0 +1,46 @@
+{% extends 'admin_page.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Student Attendance</title>
+</head>
+<body>
+    <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">SINo</th>
+      <th scope="col">Name</th>
+      <th scope="col">Initial Day</th>
+      <th scope="col">Final Day</th>
+      <th scope="col">Percentage</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+       {% for attendance in attendances %}
+    <tr>
+
+        <td>{{forloop.counter}}</td>
+        <td>{{attendance.name}}</td>
+        <td>{{attendance.initial_day}}</td>
+        <td>{{attendance.final_day}}</td>
+        <td>{{attendance.percentage}}</td>
+
+
+    </tr>
+        {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+
+
+</body>
+</html>
+
+{% endblock %}
