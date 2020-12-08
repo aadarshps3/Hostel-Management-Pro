@@ -1,20 +1,26 @@
-{% extends 'admin/admin_page.html' %}
-{% block content %}
+{% extends 'student/student_page.html' %}
+{% block student %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>View Income Detail</title>
+    <title>View Fee Detail</title>
 </head>
 <body>
-    <table class="table">
-  <thead class="thead-light">
+   <div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Fee</strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+  <thead >
     <tr>
       <th scope="col">SINo</th>
       <th scope="col">Name</th>
       <th scope="col">Accommodation</th>
       <th scope="col">Electricity</th>
-      <th scope="col">Caution_deposit</th>
+      <th scope="col">Caution Deposit</th>
       <th scope="col">Security</th>
       <th scope="col">Mess</th>
       <th scope="col">Others</th>
@@ -26,7 +32,7 @@
 
         <td>{{forloop.counter}}</td>
         <td>{{fee.name}}</td>
-        <td>{{fee.name}}</td>
+        <td>{{fee.accommodation}}</td>
         <td>{{fee.electricity}}</td>
         <td>{{fee.caution_deposit}}</td>
         <td>{{fee.security}}</td>

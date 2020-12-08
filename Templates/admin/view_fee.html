@@ -7,28 +7,38 @@
     <title>View Income Detail</title>
 </head>
 <body>
-    <table class="table">
-  <thead class="thead-light">
+    <div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Notifications</strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+  <thead >
     <tr>
       <th scope="col">SINo</th>
       <th scope="col">Name</th>
-      <th scope="col">Date</th>
-      <th scope="col">Payment</th>
-      <th scope="col">E-grant</th>
-<!--      <th scope="col">Update</th>-->
-<!--      <th scope="col">Delete</th>-->
-
+      <th scope="col">Accommodation</th>
+      <th scope="col">Electricity</th>
+      <th scope="col">Caution_deposit</th>
+      <th scope="col">Security</th>
+      <th scope="col">Mess</th>
+      <th scope="col">Others</th>
     </tr>
   </thead>
   <tbody>
-       {% for complaint in complaints %}
+       {% for fee in fees %}
     <tr>
 
         <td>{{forloop.counter}}</td>
-        <td>{{complaint.name}}</td>
-        <td>{{complaint.date}}</td>
-        <td>{{complaint.payment}}</td>
-        <td>{{complaint.e_grant}}</td>
+        <td>{{fee.name}}</td>
+        <td>{{fee.name}}</td>
+        <td>{{fee.electricity}}</td>
+        <td>{{fee.caution_deposit}}</td>
+        <td>{{fee.security}}</td>
+        <td>{{fee.mess}}</td>
+        <td>{{fee.others}}</td>
+
 
 
     </tr>
@@ -37,7 +47,9 @@
   </tbody>
 </table>
 
-
+        </div>
+    </div>
+    </div>
 
 
 

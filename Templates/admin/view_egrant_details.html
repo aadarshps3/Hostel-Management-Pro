@@ -1,4 +1,4 @@
-{% extends 'admin_page.html' %}
+{% extends 'admin/admin_page.html' %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,8 +7,14 @@
     <title>View E-Grant Details</title>
 </head>
 <body>
-    <table class="table">
-  <thead class="thead-light">
+    <div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Notifications</strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+  <thead >
     <tr>
       <th scope="col">SINo</th>
       <th scope="col"></th>
@@ -33,7 +39,9 @@
   </tbody>
 </table>
 
-
+        </div>
+    </div>
+    </div>
 
 
 

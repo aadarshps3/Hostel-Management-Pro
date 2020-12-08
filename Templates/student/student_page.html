@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Hostel Management System</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -85,73 +85,59 @@
                 <li class="menu-title">Hostel Details</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Manage Hostel Details</a>
+                       aria-expanded="false">  Hostel Details</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'add_hostel_detail' %}">Add Hostel Detail</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_hostel_detail' %}">View Hostel Detail</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="">View Hostel Detail</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href=""> Book</a></li>
                     </ul>
                 </li>
-                <li class="menu-title">Food Details</li><!-- /.menu-title -->
+
+                <li class="menu-title">Fee Payment</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Manage Food Details </a>
+                       aria-expanded="false"> Fees </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'add_food_detail' %}">Add Food</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_food_detail' %}">View food</a></li>
-                    </ul>
-                </li>
-                <li class="menu-title">Complaints</li><!-- /.menu-title -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Manage Complaints </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_complaint' %}">View Complaints</a></li>
-                    </ul>
-                </li>
-                <li class="menu-title"> Income</li><!-- /.menu-title -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Manage Income </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'add_income_detail' %}">Add Income</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_income_detail' %}">View Income</a></li>
-                    </ul>
-                </li>
-                <li class="menu-title"> Payment</li><!-- /.menu-title -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Manage Payment </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_payment' %}">View Payment</a></li>
-                    </ul>
-                </li>
-                <li class="menu-title"> Notification</li><!-- /.menu-title -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Manage Notifications </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'add_notification' %}">Add Notifications</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_notification' %}">View Notifications</a>
-                        </li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_fee_student' %}">View Fee</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'pay_fee' %}">Pay Fee</a></li>
                     </ul>
                 </li>
                 <li class="menu-title"> Attendance</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Manage Attendance </a>
+                       aria-expanded="false">Attendance Details </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_attendance' %}">View Attendance</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_attendance_student' %}">View Attendance</a></li>
                     </ul>
                 </li>
-                <li class="menu-title"> Staff</li><!-- /.menu-title -->
+
+                <li class="menu-title"> Food Details </li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Manage Staff </a>
+                       aria-expanded="false"> Deatils </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'add_staff' %}">Add Staff</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_staff' %}">View Staff</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_food_student' %}">View Food Updates</a></li>
+
+                        </li>
                     </ul>
                 </li>
+                <li class="menu-title"> Complaints</li><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> Complaint Details </a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'send_complaint' %}">Send Complaint</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_send_compalints' %}">view Complaint</a></li>
+                    </ul>                </li>
+
+                </li>
+                <li class="menu-title"> Review</li><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> Review Details </a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'add_review' %}">Add Review</a></li>
+
+                    </ul>
                 <li class="menu-title"> E-grant</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -161,14 +147,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-title"> Registration</li><!-- /.menu-title -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Manage Registration </a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_egrant_details' %}">View Registration</a></li>
-                    </ul>
-                </li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -180,7 +159,7 @@
     <header id="header" class="header">
         <div class="top-left">
             <div class="navbar-header">
-                <a class="navbar-brand" href="./"><img src="{% static 'assets/images/Untitled.png' %}" alt="Logo"></a>
+                <a class="navbar-brand" href="./"><img src="{% static 'assets/images/student.png' %}" alt="Logo"></a>
 <!--                <a class="navbar-brand hidden" href="./"><img src="{% static 'assets/images/logo2.png' %}"-->
 <!--                                                              alt="Logo"></a>-->
                 <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
@@ -205,11 +184,11 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="notification">
                             <p class="red">You have 3 Notification</p>
-                            <a class="dropdown-item media" href="#">
+                            <a class="dropdown-item media" href="{% url 'notification_view_student' %}">
                                 <i class="fa fa-check"></i>
-                                <p>Server #1 overloaded.</p>
+                                <p>Check</p>
                             </a>
-                            <a class="nav-link" href="{% url 'logout_view' %}"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="{% url 'accounts:logout_view' %}"><i class="fa fa-power -off"></i>Logout</a>
 
                         </div>
                     </div>
@@ -229,7 +208,7 @@
         <div class="animated fadeIn">
 
 
-            {% block content %} {% endblock %}
+            {% block student %} {% endblock %}
 
 
         </div>

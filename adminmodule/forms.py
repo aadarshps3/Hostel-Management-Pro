@@ -1,34 +1,11 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django import forms
+from django.forms import Textarea
 
-from adminmodule.models import User, AdminRegister, HostelDetails, Food, Income, Notification, StaffRegister
-
-
-class AdminSignUpForm(UserCreationForm):
-    name = forms.CharField(required=False)
-    email = forms.CharField(required=False)
-    phone_no = forms.CharField(max_length=10,required=False)
-    address = forms.CharField(required=False)
-    password1 = forms.CharField(label="Password", widget=forms.PasswordInput,required=False)
-    password2 = forms.CharField(label="confirm Password", widget=forms.PasswordInput,required=False)
-
-    class Meta(UserCreationForm.Meta):
-        model = User
-
-    @transaction.atomic
-    def save(self):
-        user = super().save(commit=False)
-        user.is_staff = False
-        user.is_admin = True
-        user.save()
-        admin = AdminRegister.objects.create(user=user)
-        admin.name = self.cleaned_data.get('name')
-        admin.email = self.cleaned_data.get('email')
-        admin.phone_no = self.cleaned_data.get('phone_no')
-        admin.address = self.cleaned_data.get('address')
-        admin.save()
-        return user
+from accounts.models import Student,Parent
+from adminmodule.models import HostelDetails, Food, Income, Notification, StaffRegister, Fees, Attendance, Payment, \
+    Complaint, Review
 
 
 class AddHostelDetailsForm(forms.ModelForm):
@@ -64,14 +41,42 @@ class AddIncomeDetailForm(forms.ModelForm):
 class AddStaffForm(forms.ModelForm):
     class Meta:
         model = StaffRegister
-        fields = ('name','mobile','email','address','username','password')
+        fields = ('name','mobile','email','address',)
 
 
 class UpdateStaffForm(forms.ModelForm):
     class Meta:
         model = StaffRegister
-        fields = ('name','mobile','email','address','username','password')
+        fields = ('name','mobile','email','address',)
 
 
+class AddFeeForm(forms.ModelForm):
+    name = forms.ModelChoiceField(queryset=Student.objects.all())
+    class Meta:
+        model = Fees
+        fields = ('name','accommodation','water','electricity','caution_deposit','security','mess','others')
 
+
+class AddAttendanceForm(forms.ModelForm):
+    name = forms.ModelChoiceField(queryset=Student.objects.all())
+    class Meta:
+        model = Attendance
+        fields = ('name','initial_day','final_day','percentage')
+
+
+class PayFeeForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = ('payment','e_grant')
+
+
+class RegisterComplaintForm(forms.ModelForm):
+    class Meta:
+        model = Complaint
+        fields = ('subject','complaint')
+
+class AddReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ('review',)
 

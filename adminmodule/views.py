@@ -1,44 +1,21 @@
 from django.contrib import auth, messages
 from django.contrib.auth import login, logout
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 
 # Create your views here.
-from adminmodule.forms import AdminSignUpForm, AddHostelDetailsForm, UpdateHostelDetailsForm, AddFoodDetail, \
-    AddIncomeDetailForm, AddStaffForm, UpdateStaffForm, UpdateFoodDetail
-from adminmodule.models import HostelDetails, Food, Income, Complaint, Payment, Notification, Attendance, StaffRegister
+from django.urls import reverse
+
+from accounts.models import Student, Parent
+from adminmodule.forms import AddHostelDetailsForm, UpdateHostelDetailsForm, AddFoodDetail, \
+    AddIncomeDetailForm, AddStaffForm, UpdateStaffForm, UpdateFoodDetail, AddFeeForm, AddAttendanceForm
+from adminmodule.models import HostelDetails, Food, Income, Complaint, Payment, Notification, Attendance, StaffRegister, \
+    Fees
 
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            login(request,user)
-            if user.is_admin:
-                return redirect('admin_page')
-
-        else:
-            messages.info(request,"Inavlid Credentials")
-
-    return render(request,'login.html')
-
-def logout_view(request):
-    logout(request)
-    return redirect('/')
-
-
-def admin_register(request):
-    form = AdminSignUpForm(request.POST)
-    if form.is_valid():
-        user = form.save()
-        return redirect('login_view')
-    return render(request,'admin_register.html', {'form':form})
-
-# hhhhhhhhhhhhhhhhhhhhhh
 def admin_page(request):
-    return render(request,'admin_page.html')
+    return render(request,'admin/admin_page.html')
 
 
 def add_hostel_detail(request):
@@ -46,12 +23,12 @@ def add_hostel_detail(request):
     if form.is_valid():
         form.save()
         return redirect('view_hostel_detail')
-    return render(request,'add_hostel_details.html',{'form':form})
+    return render(request,'admin/add_hostel_details.html',{'form':form})
 
 
 def view_hostel_detail(request):
     detail = HostelDetails.objects.all()
-    return render(request,'view_hostel_detail.html',{'details':detail})
+    return render(request,'admin/view_hostel_detail.html',{'details':detail})
 
 
 def update_hostel_detail(request,id):
@@ -60,7 +37,7 @@ def update_hostel_detail(request,id):
     if form.is_valid():
         form.save()
         return redirect('view_hostel_detail')
-    return render(request,'update_hostel_details.html',{'form':form})
+    return render(request,'admin/update_hostel_details.html',{'form':form})
 
 
 def delete_hostel_detail(request, id):
@@ -68,7 +45,7 @@ def delete_hostel_detail(request, id):
     if request.method == 'POST':
         detail.delete()
         return redirect('view_hostel_detail')
-    return render(request,'delete_hostel_detail.html')
+    return render(request,'admin/delete_hostel_detail.html')
 
 
 def add_food_detail(request):
@@ -76,14 +53,12 @@ def add_food_detail(request):
     if form.is_valid():
         form.save()
         return redirect('view_food_detail')
-    return render(request,'add_food_details.html',{'form':form})
+    return render(request,'admin/add_food_details.html',{'form':form})
 
 
 def view_food_detail(request):
     food = Food.objects.all()
-    print(food)
-    return render(request,'view_food_detail.html',{'foods':food})
-
+    return render(request,'admin/view_food_detail.html',{'foods':food})
 
 
 def update_food_detail(request,id):
@@ -92,7 +67,7 @@ def update_food_detail(request,id):
     if form.is_valid():
         form.save()
         return redirect('view_food_detail')
-    return render(request,'update_food_details.html',{'form':form})
+    return render(request,'admin/update_food_details.html',{'form':form})
 
 
 def delete_food_detail(request, id):
@@ -100,7 +75,7 @@ def delete_food_detail(request, id):
     if request.method == 'POST':
         detail.delete()
         return redirect('view_food_detail')
-    return render(request,'delete_food_detail.html')
+    return render(request,'admin/delete_food_detail.html')
 
 
 def add_income_detail(request):
@@ -108,21 +83,35 @@ def add_income_detail(request):
     if form.is_valid():
         form.save()
         return redirect('view_income_detail')
-    return render(request,'add_income_details.html',{'form':form})
+    return render(request,'admin/add_income_details.html',{'form':form})
+
 
 def view_income_detail(request):
     income = Income.objects.all()
-    return render(request,'view_income_detail.html',{'incomes':income})
+    return render(request,'admin/view_income_detail.html',{'incomes':income})
 
 
 def view_complaint(request):
     complaint = Complaint.objects.all()
-    return render(request,'view_complaint.html',{'complaints':complaint})
+    return render(request,'admin/view_complaint.html',{'complaints':complaint})
+
+
+def add_fee(request):
+    form = AddFeeForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('view_fee')
+    return render(request,'admin/add_fee.html',{'form':form})
+
+
+def view_fee(request):
+    fee = Fees.objects.all()
+    return render(request,'admin/view_fee.html',{'fees':fee})
 
 
 def view_payment(request):
     payment = Payment.objects.all()
-    return render(request,'view_payment.html',{'payments':payment})
+    return render(request,'admin/view_payment.html',{'payments':payment})
 
 
 def add_notification(request):
@@ -137,18 +126,25 @@ def add_notification(request):
         noti.save()
 
         return redirect('view_notification')
-    return render(request,'add_notification.html',)
-
+    return render(request,'admin/add_notification.html',)
 
 
 def view_notification(request):
     notification = Notification.objects.all()
-    return render(request,'view_notification.html',{'notifications':notification})
+    return render(request,'admin/view_notification.html',{'notifications':notification})
+
+
+def add_attendance(request):
+    form = AddAttendanceForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('view_attendance')
+    return render(request,'admin/add_attendance.html',{'form':form})
 
 
 def view_attendance(request):
     attendance = Attendance.objects.all()
-    return render(request,'view_attendance.html',{'attendances':attendance})
+    return render(request,'admin/view_attendance.html',{'attendances':attendance})
 
 
 def add_staff(request):
@@ -156,20 +152,22 @@ def add_staff(request):
     if form.is_valid():
         form.save()
         return redirect('view_staff')
-    return render(request,'add_income_details.html',{'form':form})
+    return render(request,'admin/add_income_details.html',{'form':form})
+
 
 def view_staff(request):
     staff = StaffRegister.objects.all()
-    return render(request,'view_staff.html',{'staffs':staff})
+    return render(request,'admin/view_staff.html',{'staffs':staff})
 
 
 def update_staff(request,id):
     staff = StaffRegister.objects.get(id=id)
+
     form = UpdateStaffForm(request.POST or None, instance=staff)
     if form.is_valid():
         form.save()
         return redirect('view_staff')
-    return render(request,'update_staff.html',{'form':form})
+    return render(request,'admin/update_staff.html',{'form':form})
 
 
 def delete_staff(request, id):
@@ -177,14 +175,48 @@ def delete_staff(request, id):
     if request.method == 'POST':
         staff.delete()
         return redirect('view_staff')
-    return render(request,'delete_staff.html')
+    return render(request,'admin/delete_staff.html')
+
 
 def view_egrant_details(request):
-    return render(request,'view_egrant_details.html')
+    return render(request,'admin/view_egrant_details.html')
 
 
 def view_registration_details(request):
-    return render(request,'view_registration_details.html')
+    student = Student.objects.all()
+    parent = Parent.objects.all()
+    context = {
+        'students':student,
+        'parents':parent
+    }
+    return render(request,'admin/view_registration_details.html',context)
 
-def index(request):
-    return render(request,'index.html')
+
+def approve_student(request,id):
+    student = Student.objects.get(id=id)
+    student.approval_status = True
+    student.save()
+    return HttpResponseRedirect(reverse('view_registration_details'))
+
+def reject_student(request,id):
+    student = Student.objects.get(id=id)
+    if request.method == 'POST':
+        student.approval_status = False
+        student.save()
+        return redirect('view_registration_details')
+    return render(request,'admin/reject_student.html')
+
+
+def approve_parent(request,id):
+    parent = Parent.objects.get(id=id)
+    parent.approval_status = True
+    parent.save()
+    return HttpResponseRedirect(reverse('view_registration_details'))
+
+def reject_parent(request,id):
+    parent = Parent.objects.get(id=id)
+    if request.method == 'POST':
+        parent.approval_status = False
+        parent.save()
+        return redirect('view_registration_details')
+    return render(request,'admin/reject_parent.html')

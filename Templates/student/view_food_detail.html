@@ -1,0 +1,50 @@
+{% extends 'student/student_page.html' %}
+{% block student %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Hostel Detail</title>
+</head>
+<body>
+
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Food Details</strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">SINo</th>
+                    <th scope="col">Breakfast</th>
+                    <th scope="col">Lunch</th>
+                    <th scope="col">Dinner</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for food in foods %}
+                <tr>
+
+                    <td>{{forloop.counter}}</td>
+                    <td>{{food.breakfast}}</td>
+                    <td>{{food.lunch}}</td>
+                    <td>{{food.dinner}}</td>
+
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+{% endblock %}

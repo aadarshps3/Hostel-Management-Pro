@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Hostel Management System</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -122,6 +122,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> Manage Payment </a>
                     <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'add_fee' %}">Add Fee</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_fee' %}">View Fee</a></li>
                         <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_payment' %}">View Payment</a></li>
                     </ul>
                 </li>
@@ -166,7 +168,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> Manage Registration </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_egrant_details' %}">View Registration</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_registration_details' %}">View Registration</a></li>
                     </ul>
                 </li>
             </ul>
@@ -209,7 +211,7 @@
                                 <i class="fa fa-check"></i>
                                 <p>Server #1 overloaded.</p>
                             </a>
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="{% url 'accounts:logout_view' %}"><i class="fa fa-power -off"></i>Logout</a>
 
                         </div>
                     </div>

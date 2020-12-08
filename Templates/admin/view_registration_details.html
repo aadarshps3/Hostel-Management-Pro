@@ -1,4 +1,4 @@
-{% extends 'admin_page.html' %}
+{% extends 'admin/admin_page.html' %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,38 +7,97 @@
     <title>View Income Detail</title>
 </head>
 <body>
-    <table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">SINo</th>
-      <th scope="col">Name</th>
-      <th scope="col">Mobile</th>
-      <th scope="col">Email</th>
-      <th scope="col">Address</th>
-      <th scope="col">Username</th>
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Student Registrations</strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">SINo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone No</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for student in students %}
+                        <td>{{forloop.counter}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.phone_no}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.address}}</td>
+                        <td>{{student.user.username}}</td>
+                        <td>
+                            {% if student.approval_status == 0 %}
+                            <a style="color:green" href="{% url 'approve_student' student.id %}">Approve</a>/
+                            <a style="color:red" href="{% url 'reject_student' student.id %}">Reject</a>
+                            {% elif student.approval_status == True %}
+                            <p>Approved</p>
+                            {% else %}
+                            <p>Rejected</p>
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-
-        <td>{{forloop.counter}}</td>
-
-
-
-
-
-
-    </tr>
-
-
-  </tbody>
-</table>
-
-
-
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Parent Registrations</strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">SINo</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone No</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for parent in parents %}
+                        <td>{{forloop.counter}}</td>
+                       <td>{{parent.student_name}}</td>
+                        <td>{{parent.name}}</td>
+                        <td>{{parent.phone_no}}</td>
+                        <td>{{parent.email}}</td>
+                        <td>{{parent.address}}</td>
+                        <td>{{parent.user.username}}</td>
+                        <td>
+                            {% if parent.approval_status == 0 %}
+                            <a style="color:green" href="{% url 'approve_parent' parent.id %}">Approve</a>/
+                            <a style="color:red" href="{% url 'reject_parent' parent.id %}">Reject</a>
+                            {% elif parent.approval_status == True %}
+                            <p>Approved</p>
+                            {% else %}
+                            <p>Rejected</p>
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 </body>

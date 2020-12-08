@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'adminmodule',
+    'accounts',
     'crispy_forms',
 ]
 
@@ -127,6 +128,6 @@ STATICFILES_DIRS=[os.path.join(BASE_DIR, "static"), STATIC_URL]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
-AUTH_USER_MODEL = 'adminmodule.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
