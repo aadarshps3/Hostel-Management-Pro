@@ -1,0 +1,66 @@
+{% extends 'parent/parent_page.html' %}
+{% block parent %}
+
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Hostel Details</strong>
+        </div>
+        <div class="card-body">
+            {% for detail in details %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Total Rooms</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{detail.total_rooms}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Occupied</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{detail.occupied}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Anual Expenses</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{detail.annual_expenses}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Location</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{detail.location}}</label>
+                    </div>
+                </div>
+            </div>
+             <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Contact No</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{detail.contact_no}}</label>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

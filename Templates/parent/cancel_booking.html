@@ -1,0 +1,27 @@
+{% extends 'student/student_page.html' %}
+{% block student %}
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title"></strong>
+        </div>
+        <div class="card-body">
+
+            <form method="post">{% csrf_token %}
+
+
+                <h1> Are You Sure Want to Cancel?</h1>
+                <br>
+                <br>
+                <br>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">YES</button>
+                    <a href="{% url 'booking_status' %}" type="submit" class="btn btn-primary ">CANCEL</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

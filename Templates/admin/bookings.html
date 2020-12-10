@@ -1,0 +1,55 @@
+{% extends 'admin/admin_page.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Income Detail</title>
+</head>
+<body>
+   <div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Payment Details</strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+  <thead >
+    <tr>
+      <th scope="col">SINo</th>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Payment</th>
+      <th scope="col">E-grant</th>
+<!--      <th scope="col">Update</th>-->
+<!--      <th scope="col">Delete</th>-->
+
+    </tr>
+  </thead>
+  <tbody>
+       {% for complaint in complaints %}
+    <tr>
+
+        <td>{{forloop.counter}}</td>
+        <td>{{complaint.name}}</td>
+        <td>{{complaint.date}}</td>
+        <td>{{complaint.payment}}</td>
+        <td>{{complaint.e_grant}}</td>
+
+
+    </tr>
+        {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+</div>
+    </div>
+   </div>
+
+</body>
+</html>
+
+{% endblock %}
