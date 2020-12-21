@@ -10,37 +10,57 @@
 <div class="col-lg-8">
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">Booking Details</strong>
+            <strong class="card-title">E-grant Details</strong>
         </div>
         <div class="card-body">
-            {% for status in statuss %}
+            {% for egrant in egrants %}
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4">
                         <label>Name</label>
                     </div>
                     <div class="col-lg-8">
-                        <label>:{{status.name}}</label>
+                        <label>:{{egrant.name}}</label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4">
-                        <label>Date Joining</label>
+                        <label>Course</label>
                     </div>
                     <div class="col-lg-8">
-                        <label>:{{status.date_joining}}</label>
+                        <label>:{{egrant.course}}</label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4">
-                        <label>Booking Date</label>
+                        <label>Academic Year</label>
                     </div>
                     <div class="col-lg-8">
-                        <label>:{{status.booking_date}}</label>
+                        <label>:{{egrant.academic_year}}</label>
+                    </div>
+                </div>
+            </div>
+             <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Cast</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{egrant.cast}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Yearly Income</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{egrant.yearly_income}}</label>
                     </div>
                 </div>
             </div>
@@ -51,12 +71,12 @@
                     </div>
                     <div class="col-lg-8">
 
-                            {% if status.status == 0 %}
-                            <label>:Booking Pending</label>
-                            {% elif status.status == False %}
-                             <label>: Room Not Available</label>
+                            {% if egrant.approval_status == 0 %}
+                            <label>:Approval Pending</label>
+                            {% elif egrant.approval_status == False %}
+                             <label>:Rejected </label>
                             {% else %}
-                            <label>: Booking Confirmed</label>
+                            <label>:Approved </label>
                             {% endif %}
 
 
@@ -68,7 +88,7 @@
         </div>
 
     </div>
-   <a class="btn btn-danger" href="{% url 'cancel_booking' status.id %}">CANCEL BOOKING</a>
+
 {% endfor %}
 </div>
 

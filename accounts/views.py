@@ -37,8 +37,10 @@ def select_role(request):
             return redirect('accounts:admin_register')
         elif role == 'Student':
             return redirect('accounts:student_register')
-        else:
+        elif role == 'Parent':
             return redirect('accounts:parent_register')
+        else:
+            messages.info(request,'Please Choose Your Type')
 
     return render(request,'select_role.html')
 
@@ -47,7 +49,6 @@ def admin_register(request):
     form = AdminSignUpForm(request.POST)
     if form.is_valid():
         user = form.save()
-        print(user.role)
         return redirect('accounts:login_view')
     return render(request,'admin/admin_register.html', {'form':form})
 

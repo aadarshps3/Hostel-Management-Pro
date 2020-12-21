@@ -1,0 +1,95 @@
+{% extends 'parent/parent_page.html' %}
+{% block parent %}
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+
+  {{message}}
+    </div>
+    {% endfor %}
+
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">E-grant Details</strong>
+        </div>
+        <div class="card-body">
+            {% for egrant in egrants %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Name</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{egrant.name}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Course</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{egrant.course}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Academic Year</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{egrant.academic_year}}</label>
+                    </div>
+                </div>
+            </div>
+             <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Cast</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{egrant.cast}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Yearly Income</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{egrant.yearly_income}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Status</label>
+                    </div>
+                    <div class="col-lg-8">
+
+                            {% if egrant.approval_status == 0 %}
+                            <label>:Approval Pending</label>
+                            {% elif egrant.approval_status == False %}
+                             <label>:Rejected </label>
+                            {% else %}
+                            <label>:Approved </label>
+                            {% endif %}
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+{% endfor %}
+</div>
+
+{% endblock %}

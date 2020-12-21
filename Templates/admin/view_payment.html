@@ -17,24 +17,25 @@
   <thead >
     <tr>
       <th scope="col">SINo</th>
-      <th scope="col">Name</th>
+      <th scope="col">Student name</th>
+      <th scope="col">Paid by</th>
       <th scope="col">Date</th>
       <th scope="col">Payment</th>
-      <th scope="col">E-grant</th>
-<!--      <th scope="col">Update</th>-->
-<!--      <th scope="col">Delete</th>-->
+<!--      <th scope="col">E-grant</th>-->
+
 
     </tr>
   </thead>
   <tbody>
-       {% for complaint in complaints %}
+       {% for payment in payments %}
     <tr>
 
         <td>{{forloop.counter}}</td>
-        <td>{{complaint.name}}</td>
-        <td>{{complaint.date}}</td>
-        <td>{{complaint.payment}}</td>
-        <td>{{complaint.e_grant}}</td>
+        <td>{{payment.student_name}}</td>
+        <td>{{payment.paid_by}}</td>
+        <td>{{payment.date}}</td>
+        <td>{{payment.payment}}</td>
+<!--        <td>{{payment.e_grant}}</td>-->
 
 
     </tr>

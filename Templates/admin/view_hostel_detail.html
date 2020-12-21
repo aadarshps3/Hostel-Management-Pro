@@ -7,7 +7,7 @@
     <title> Hostel Detail</title>
 </head>
 <body>
-   <div class="col-lg-8">
+   <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
             <strong class="card-title">Hostel Details</strong>
@@ -22,6 +22,10 @@
       <th scope="col">Annual Expense</th>
       <th scope="col">Location</th>
       <th scope="col">Contact Number</th>
+      <th scope="col">Room Facilities</th>
+      <th scope="col">Image1</th>
+      <th scope="col">Image2</th>
+      <th scope="col">Image3</th>
       <th scope="col">Update</th>
       <th scope="col">Delete</th>
 
@@ -37,6 +41,10 @@
         <td>{{detail.annual_expenses}}</td>
         <td>{{detail.location}}</td>
         <td>{{detail.contact_no}}</td>
+        <td>{{detail.room_facilities}}</td>
+        <td><img src="{{detail.image1.url}}" style="width:100px"></td>
+        <td><img src="{{detail.image2.url}}" style="width:100px"></td>
+        <td><img src="{{detail.image3.url}}" style="width:100px"></td>
         <td>
             <a href="{% url 'update_hostel_detail' detail.id %}">Update</a>
         </td>

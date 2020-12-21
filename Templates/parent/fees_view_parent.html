@@ -1,0 +1,110 @@
+{% extends 'parent/parent_page.html' %}
+{% block parent %}
+
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Fee </strong>
+        </div>
+        <div class="card-body">
+            {% for fee in fees %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Accommodation</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{fee.accommodation}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Water</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{fee.water}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Electricity</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{fee.electricity}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Caution Deposit</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{fee.caution_deposit}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Security</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{fee.security}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Mess</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{fee.mess}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Others</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{fee.others}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label></label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>
+                            {% if fee.payment_status == False %}
+                            <a href="{% url 'parent_pay_fee' fee.id %}" class=" btn btn-info" type="submit">PAY</a></label>
+                        {% else %}
+                        <p>FEE PAID</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        {% endfor %}
+    </div>
+</div>
+
+</div>
+
+{% endblock %}

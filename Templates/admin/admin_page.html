@@ -154,12 +154,12 @@
                         <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_staff' %}">View Staff</a></li>
                     </ul>
                 </li>
-                <li class="menu-title"> E-grant</li><!-- /.menu-title -->
+                <li class="menu-title">Manage E-grant</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> e-grant details</a>
+                       aria-expanded="false"> E-grant </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="tables-data.html">View e-grant details</a>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_egrant_details' %}">View e-grant Applications</a>
                         </li>
                     </ul>
                 </li>
@@ -169,6 +169,22 @@
                        aria-expanded="false"> Manage Registration </a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_registration_details' %}">View Registration</a></li>
+                    </ul>
+                </li>
+                 <li class="menu-title"> room booking</li><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> Manage Bookings </a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'bookings' %}">View Bookings</a></li>
+                    </ul>
+                </li>
+                 <li class="menu-title">Review</li><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> Student Reviews </a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'review' %}">View Reviews</a></li>
                     </ul>
                 </li>
             </ul>
@@ -199,23 +215,22 @@
 <!--                        </form>-->
                     </div>
 
-                    <div class="dropdown for-notification">
+                   <div class="dropdown for-notification">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
-                            <span class="count bg-danger">3</span>
+<!--                            <span class="count bg-danger">3</span>-->
                         </button>
                         <div class="dropdown-menu" aria-labelledby="notification">
-                            <p class="red">You have 3 Notification</p>
-                            <a class="dropdown-item media" href="#">
-                                <i class="fa fa-check"></i>
-                                <p>Server #1 overloaded.</p>
-                            </a>
+<!--                            <p class="red">You have 3 Notification</p>-->
+<!--                            <a class="dropdown-item media" href="{% url 'notification_view_student' %}">-->
+<!--                                <i class="fa fa-check"></i>-->
+<!--                                <p>Check</p>-->
+<!--                            </a>-->
                             <a class="nav-link" href="{% url 'accounts:logout_view' %}"><i class="fa fa-power -off"></i>Logout</a>
 
                         </div>
                     </div>
-
 
                 </div>
 

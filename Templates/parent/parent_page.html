@@ -91,14 +91,25 @@
 
                     </ul>
                 </li>
+                <li class="menu-title">Room Booking</li><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">  Book Rooms</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'book_room_parent' %}">Book Now</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'booking_status_parent' %}">Booking Status</a></li>
+
+                    </ul>
+                </li>
 
                 <li class="menu-title">Fee Payment</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> Fees </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_fee_student' %}">View Fee</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'pay_fee' %}">Pay Fee</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'parent_fee_view' %}">View Fee</a></li>
+
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'payment_details_parent' %}">Payment Details</a></li>
                     </ul>
                 </li>
                 <li class="menu-title"> Attendance</li><!-- /.menu-title -->
@@ -106,7 +117,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">Attendance Details </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'view_attendance_student' %}">View Attendance</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'student_attendance' %}">View Attendance</a></li>
                     </ul>
                 </li>
                  <li class="menu-title"> E-grant</li><!-- /.menu-title -->
@@ -114,7 +125,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> e-grant details</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="tables-data.html">View e-grant details</a>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{% url 'student_egrant' %}">View e-grant details</a>
                         </li>
                     </ul>
                 </li>
@@ -167,14 +178,14 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
-                            <span class="count bg-danger">3</span>
+<!--                            <span class="count bg-danger">3</span>-->
                         </button>
                         <div class="dropdown-menu" aria-labelledby="notification">
-                            <p class="red">You have 3 Notification</p>
-                            <a class="dropdown-item media" href="{% url 'notification_view_student' %}">
-                                <i class="fa fa-check"></i>
-                                <p>Check</p>
-                            </a>
+<!--                            <p class="red">You have 3 Notification</p>-->
+<!--                            <a class="dropdown-item media" href="{% url 'notification_view_student' %}">-->
+<!--                                <i class="fa fa-check"></i>-->
+<!--                                <p>Check</p>-->
+<!--                            </a>-->
                             <a class="nav-link" href="{% url 'accounts:logout_view' %}"><i class="fa fa-power -off"></i>Logout</a>
 
                         </div>

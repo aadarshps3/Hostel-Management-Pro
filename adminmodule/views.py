@@ -1,5 +1,6 @@
 from django.contrib import auth, messages
 from django.contrib.auth import login, logout
+from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
@@ -11,7 +12,7 @@ from accounts.models import Student, Parent
 from adminmodule.forms import AddHostelDetailsForm, UpdateHostelDetailsForm, AddFoodDetail, \
     AddIncomeDetailForm, AddStaffForm, UpdateStaffForm, UpdateFoodDetail, AddFeeForm, AddAttendanceForm
 from adminmodule.models import HostelDetails, Food, Income, Complaint, Payment, Notification, Attendance, StaffRegister, \
-    Fees
+    Fees, BookRoom, Egrant, Review
 
 
 def admin_page(request):
@@ -19,10 +20,23 @@ def admin_page(request):
 
 
 def add_hostel_detail(request):
-    form = AddHostelDetailsForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('view_hostel_detail')
+    form = AddHostelDetailsForm()
+    if request.method == 'POST' :
+        form = AddHostelDetailsForm(request.POST,request.FILES)
+        if form.is_valid():
+            hostel = form.save(commit=False)
+            hostel.total_rooms = form.cleaned_data.get('total_rooms')
+            hostel.occupied = form.cleaned_data.get('occupied')
+            hostel.annual_expenses = form.cleaned_data.get('annual_expenses')
+            hostel.location = form.cleaned_data.get('location')
+            hostel.contact_no = form.cleaned_data.get('contact_no')
+            hostel.room_facilities = form.cleaned_data.get('room_facilities')
+            hostel.image1 = request.FILES['image1']
+            hostel.image2 = request.FILES['image2']
+            hostel.image3 = request.FILES['image3']
+            fs = FileSystemStorage()
+            hostel.save()
+            return redirect('view_hostel_detail')
     return render(request,'admin/add_hostel_details.html',{'form':form})
 
 
@@ -97,10 +111,22 @@ def view_complaint(request):
 
 
 def add_fee(request):
-    form = AddFeeForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('view_fee')
+    form = AddFeeForm()
+    if request.method=='POST':
+        form = AddFeeForm(request.POST)
+        if form.is_valid():
+            f = form.save(commit=False)
+            name = form.cleaned_data.get('name')
+            accommadation = form.cleaned_data.get('accommadation')
+            water = form.cleaned_data.get('water')
+            electricity = form.cleaned_data.get('electricity')
+            caution_deposit = form.cleaned_data.get('caution_deposit')
+            security = form.cleaned_data.get('security')
+            mess = form.cleaned_data.get('mess')
+            others = form.cleaned_data.get('others')
+            form.save()
+            return redirect('view_fee')
+
     return render(request,'admin/add_fee.html',{'form':form})
 
 
@@ -178,10 +204,6 @@ def delete_staff(request, id):
     return render(request,'admin/delete_staff.html')
 
 
-def view_egrant_details(request):
-    return render(request,'admin/view_egrant_details.html')
-
-
 def view_registration_details(request):
     student = Student.objects.all()
     parent = Parent.objects.all()
@@ -220,3 +242,46 @@ def reject_parent(request,id):
         parent.save()
         return redirect('view_registration_details')
     return render(request,'admin/reject_parent.html')
+
+def bookings(request):
+    book = BookRoom.objects.all()
+    return render(request,'admin/bookings.html',{'books':book})
+
+
+def confirm_booking(request,id):
+    book = BookRoom.objects.get(id=id)
+    book.status = True
+    book.save()
+    return HttpResponseRedirect(reverse('bookings'))
+
+def reject_booking(request,id):
+    book = BookRoom.objects.get(id=id)
+    if request.method == 'POST':
+        book.status = False
+        book.save()
+        return redirect('bookings')
+    return render(request,'admin/reject_booking.html')
+
+
+def view_egrant_details(request):
+    egrant = Egrant.objects.all()
+    return render(request,'admin/view_egrant_applications.html',{'egrants':egrant})
+
+def approve_egrant(request,id):
+    egrant = Egrant.objects.get(id=id)
+    egrant.approval_status = True
+    egrant.save()
+    return HttpResponseRedirect(reverse('view_egrant_details'))
+
+def reject_egrant(request,id):
+    egrant = Egrant.objects.get(id=id)
+    if request.method == 'POST':
+        egrant.status = False
+        egrant.save()
+        return redirect('view_egrant_details')
+    return render(request,'admin/reject_booking.html')
+
+
+def review(request):
+    review = Review.objects.all()
+    return render(request,'admin/reviews.html',{'reviews':review})

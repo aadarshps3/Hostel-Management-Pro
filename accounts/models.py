@@ -41,3 +41,6 @@ class Parent(models.Model):
     email = models.EmailField()
     phone_no = models.CharField(max_length=10,null=True)
     approval_status = models.BooleanField(default=0)
+
+    def __str__(self):
+        return self.name

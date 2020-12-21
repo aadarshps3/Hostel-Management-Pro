@@ -1,13 +1,23 @@
+import re
+
 from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import ValidationError
 from django.db import transaction
 from django import forms
 from accounts.models import User, AdminRegister, Student,Parent
 
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+def phone_number_validator(value):
+    if not re.compile(r'^[7-9]\d{9}$').match(value):
+        raise ValidationError('This is Not a Valid Phone Number')
+
 class AdminSignUpForm(UserCreationForm):
     name = forms.CharField()
     email = forms.CharField()
-    phone_no = forms.CharField(max_length=10, )
+    phone_no = forms.CharField(validators=[phone_number_validator] )
     address = forms.CharField()
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput, )
     password2 = forms.CharField(label="confirm Password", widget=forms.PasswordInput, )
@@ -34,7 +44,7 @@ class AdminSignUpForm(UserCreationForm):
 class StudentSignUpForm(UserCreationForm):
     name = forms.CharField()
     email = forms.CharField()
-    phone_no = forms.CharField(max_length=10, )
+    phone_no = forms.CharField(validators=[phone_number_validator])
     address = forms.CharField()
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput,)
     password2 = forms.CharField(label="confirm Password", widget=forms.PasswordInput,)
@@ -62,7 +72,7 @@ class ParentSignUpForm(UserCreationForm):
     student_name = forms.ModelChoiceField(queryset=Student.objects.all())
     name = forms.CharField()
     email = forms.CharField()
-    phone_no = forms.CharField(max_length=10, required=False)
+    phone_no = forms.CharField(validators=[phone_number_validator])
     address = forms.CharField()
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput,)
     password2 = forms.CharField(label="confirm Password", widget=forms.PasswordInput,)

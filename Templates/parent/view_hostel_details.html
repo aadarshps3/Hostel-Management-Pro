@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4">
                         <label>Contact No</label>
@@ -58,9 +58,52 @@
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Room Facilities</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{detail.room_facilities}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Hostel Photos</label>
+                    </div>
+                    <div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{detail.image1.url}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{detail.image2.url}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{detail.image3.url}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--                 -->
+                    <!--                        <label>:<img src="{{detail.image1.url}}"></label>-->
+                    <!--                        <label><img src="{{detail.image2.url}}"></label>-->
+                    <!--                        <label><img src="{{detail.image3.url}}"></label>-->
+
+                </div>
+            </div>
         </div>
+
+
+        {% endfor %}
     </div>
 </div>
-
 {% endblock %}

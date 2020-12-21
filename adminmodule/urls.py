@@ -32,11 +32,18 @@ urlpatterns = [
     path('update_staff/<int:id>/', views.update_staff, name='update_staff'),
     path('delete_staff/<int:id>/', views.delete_staff, name='delete_staff'),
     path('view_egrant_details/', views.view_egrant_details, name='view_egrant_details'),
+    path('approve_egrant/<int:id>/', views.approve_egrant, name='approve_egrant'),
+    path('reject_egrant/<int:id>/', views.reject_egrant, name='reject_egrant'),
     path('view_registration_details/', views.view_registration_details, name='view_registration_details'),
     path('approve_student/<int:id>/', views.approve_student, name='approve_student'),
     path('reject_student/<int:id>/', views.reject_student, name='reject_student'),
     path('approve_parent/<int:id>/', views.approve_parent, name='approve_parent'),
     path('reject_parent/<int:id>/', views.reject_parent, name='reject_parent'),
+    path('bookings/', views.bookings, name='bookings'),
+    path('confirm_booking/<int:id>/', views.confirm_booking, name='confirm_booking'),
+    path('reject_booking/<int:id>/', views.reject_booking, name='reject_booking'),
+    path('reviews/', views.review, name='review'),
+
 
     path('student_page/', studentviews.student_page, name='student_page'),
     path('view_fee_student/', studentviews.view_fee, name='view_fee_student'),
@@ -47,14 +54,27 @@ urlpatterns = [
     path('view_send_compalints/', studentviews.view_send_compalints, name='view_send_compalints'),
     path('add_review/', studentviews.add_review, name='add_review'),
     path('notification_view_student/', studentviews.view_notification, name='notification_view_student'),
+    path('hostel_student/', studentviews.view_hostel_details, name='hostel_student'),
+    path('book_room/', studentviews.book_room, name='book_room'),
+    path('booking_status/', studentviews.booking_status, name='booking_status'),
+    path('cancel_booking/<int:id>/', studentviews.cancel_booking, name='cancel_booking'),
+    path('apply_egrant/', studentviews.apply_egrant, name='apply_egrant'),
+    path('egrant_status/', studentviews.egrant_status, name='egrant_status'),
+    path('pay_fee/<int:id>/', studentviews.pay_fee, name='pay_fee'),
+    path('payment_details/', studentviews.payment_details, name='payment_details'),
 
 
     path('parent_page/', parentviews.parent_page, name='parent_page'),
     path('hostel_details_parent/', parentviews.hostel_details, name='hostel_details_parent'),
     path('staff_details_parent/', parentviews.staff_details, name='staff_details_parent'),
-
-
-
+    path('book_room_parent/', parentviews.book_room_parent, name='book_room_parent'),
+    path('booking_status_parent/', parentviews.booking_status_parent, name='booking_status_parent'),
+    path('cancel_booking_parent/<int:id>/', parentviews.cancel_booking_parent, name='cancel_booking_parent'),
+    path('student_attendance/', parentviews.student_attendance, name='student_attendance'),
+    path('student_egrant/', parentviews.student_egrant, name='student_egrant'),
+    path('parent_fee_view/', parentviews.parent_fee_view, name='parent_fee_view'),
+    path('parent_pay_fee/<int:id>/', parentviews.parent_pay_fee, name='parent_pay_fee'),
+    path('payment_details_parent/', parentviews.payment_details_parent, name='payment_details_parent'),
 
 
 ]

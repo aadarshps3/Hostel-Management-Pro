@@ -4,13 +4,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>View Income Detail</title>
+    <title>Booking Details</title>
 </head>
 <body>
    <div class="col-lg-8">
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">Payment Details</strong>
+            <strong class="card-title">Booking Details</strong>
         </div>
         <div class="card-body">
             <table class="table">
@@ -18,23 +18,33 @@
     <tr>
       <th scope="col">SINo</th>
       <th scope="col">Name</th>
-      <th scope="col">Date</th>
-      <th scope="col">Payment</th>
-      <th scope="col">E-grant</th>
-<!--      <th scope="col">Update</th>-->
-<!--      <th scope="col">Delete</th>-->
+      <th scope="col">Booking Date</th>
+      <th scope="col">Joining Date</th>
+      <th scope="col">Action</th>
+
+
 
     </tr>
   </thead>
   <tbody>
-       {% for complaint in complaints %}
+       {% for book in books %}
     <tr>
 
         <td>{{forloop.counter}}</td>
-        <td>{{complaint.name}}</td>
-        <td>{{complaint.date}}</td>
-        <td>{{complaint.payment}}</td>
-        <td>{{complaint.e_grant}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.booking_date}}</td>
+        <td>{{book.date_joining}}</td>
+         <td>
+            {% if book.status == 0 %}
+            <a style="color:green" href="{% url 'confirm_booking' book.id %}">Approve</a>/
+            <a style="color:red" href="{% url 'reject_booking' book.id %}">Reject</a>
+            {% elif book.status == True %}
+            <p>Approved</p>
+            {% else %}
+            <p>Rejected</p>
+            {% endif %}
+        </td>
+
 
 
     </tr>

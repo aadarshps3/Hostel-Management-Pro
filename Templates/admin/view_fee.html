@@ -7,7 +7,7 @@
     <title>View Income Detail</title>
 </head>
 <body>
-    <div class="col-lg-8">
+    <div class="col-lg-10">
     <div class="card">
         <div class="card-header">
             <strong class="card-title">Notifications</strong>
@@ -24,6 +24,7 @@
       <th scope="col">Security</th>
       <th scope="col">Mess</th>
       <th scope="col">Others</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,12 @@
         <td>{{fee.security}}</td>
         <td>{{fee.mess}}</td>
         <td>{{fee.others}}</td>
+        <td>{% if fee.payment_status == True %}
+            <p>Fee Paid</p>
+            {% else %}
+            <p>Payment Pending </p>
+
+            {% endif %}</td>
 
 
 

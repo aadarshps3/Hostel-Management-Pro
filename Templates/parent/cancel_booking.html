@@ -1,5 +1,5 @@
-{% extends 'student/student_page.html' %}
-{% block student %}
+{% extends 'parent/parent_page.html' %}
+{% block parent %}
 <div class="col-lg-6">
     <div class="card">
         <div class="card-header">
@@ -15,9 +15,9 @@
                 <br>
                 <br>
 
-                <div class="card-footer">
+                <div >
                     <button type="submit" class="btn btn-primary">YES</button>
-                    <a href="{% url 'booking_status' %}" type="submit" class="btn btn-primary ">CANCEL</a>
+                    <a href="{% url 'booking_status_parent' %}" type="submit" class="btn btn-primary ">CANCEL</a>
                 </div>
             </form>
         </div>

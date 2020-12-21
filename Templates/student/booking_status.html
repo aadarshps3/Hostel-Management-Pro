@@ -1,13 +1,19 @@
-{% extends 'parent/parent_page.html' %}
-{% block parent %}
+{% extends 'student/student_page.html' %}
+{% block student %}
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+
+  {{message}}
+    </div>
+    {% endfor %}
 
 <div class="col-lg-8">
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">Hostel Details</strong>
+            <strong class="card-title">Booking Details</strong>
         </div>
         <div class="card-body">
-            {% for status in status %}
+            {% for status in statuss %}
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4">
@@ -58,11 +64,12 @@
                 </div>
             </div>
 
-            {% endfor %}
+
         </div>
 
     </div>
-
+   <a class="btn btn-danger" href="{% url 'cancel_booking' status.id %}">CANCEL BOOKING</a>
+{% endfor %}
 </div>
 
 {% endblock %}

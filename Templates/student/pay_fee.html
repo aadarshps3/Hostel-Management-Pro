@@ -14,21 +14,32 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Pay Bill</strong>
+                <strong class="card-title">Pay Fee</strong>
             </div>
             <div class="card-body">
                 <div class="card-title">
                     <h3 class="text-center"></h3>
                 </div>
 
-                <form action="post" method="post" novalidate="novalidate">
+                <form  method="post" novalidate="novalidate">
                     {% csrf_token %}
 
+
                     <div class="form-group ">
-                        {{form|crispy}}
+
+                         <div class="mb-3">
+                                <label  class="form-label">Payment</label>
+                                <input type="text" value="{{total}}" name="payment" readonly class="form-control"  aria-describedby="emailHelp">
+
+                              </div>
+                        <div class="mb-3">
+                                <label  class="form-label">Date</label>
+                                <input type="date"  class="form-control" name="date" aria-describedby="emailHelp">
+
+                              </div>
                     </div>
 
-                    <button class=" btn btn-info" type="submit">ADD</button>
+                    <button class=" btn btn-info" type="submit">PAY</button>
                 </form>
             </div>
         </div>

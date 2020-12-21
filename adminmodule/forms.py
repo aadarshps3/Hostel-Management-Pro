@@ -5,20 +5,27 @@ from django.forms import Textarea
 
 from accounts.models import Student,Parent
 from adminmodule.models import HostelDetails, Food, Income, Notification, StaffRegister, Fees, Attendance, Payment, \
-    Complaint, Review
+    Complaint, Review, BookRoom, Egrant
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 class AddHostelDetailsForm(forms.ModelForm):
     class Meta:
         model = HostelDetails
-        fields = ('total_rooms','occupied','annual_expenses','location','contact_no')
-
+        fields = ('total_rooms','occupied','annual_expenses','location','contact_no','room_facilities','image1','image2','image3')
+        widgets = {
+            'image1':forms.FileInput(attrs={'class':'form-control'}),
+            'image2':forms.FileInput(attrs={'class':'form-control'}),
+            'image3':forms.FileInput(attrs={'class':'form-control'}),
+        }
 
 
 class UpdateHostelDetailsForm(forms.ModelForm):
     class Meta:
         model = HostelDetails
-        fields = ('total_rooms','occupied','annual_expenses','location','contact_no')
+        fields = ('total_rooms','occupied','annual_expenses','location','contact_no','room_facilities','image1','image2','image3')
 
 
 class AddFoodDetail(forms.ModelForm):
@@ -59,15 +66,19 @@ class AddFeeForm(forms.ModelForm):
 
 class AddAttendanceForm(forms.ModelForm):
     name = forms.ModelChoiceField(queryset=Student.objects.all())
+    initial_day = forms.DateField(required=True, widget=forms.DateInput(attrs={'placeholder': 'MM/DD/YYYY'}))
+    final_day = forms.DateField(required=True, widget=forms.DateInput(attrs={'placeholder': 'MM/DD/YYYY'}))
     class Meta:
         model = Attendance
         fields = ('name','initial_day','final_day','percentage')
 
 
-class PayFeeForm(forms.ModelForm):
+class StudentPaymentForm(forms.ModelForm):
+    payment = forms.CharField(widget=forms.TextInput(attrs={'readonly':'readonly'}))
+    date = forms.DateField(required=True,widget=DateInput())
     class Meta:
         model = Payment
-        fields = ('payment','e_grant')
+        fields = ('payment','date')
 
 
 class RegisterComplaintForm(forms.ModelForm):
@@ -75,8 +86,22 @@ class RegisterComplaintForm(forms.ModelForm):
         model = Complaint
         fields = ('subject','complaint')
 
+
 class AddReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('review',)
+
+class StudentBookRoomForm(forms.ModelForm):
+    date_joining = forms.DateField(required=True,widget=forms.DateInput(attrs={'placeholder':'MM/DD/YYYY'}))
+    class Meta:
+        model = BookRoom
+        fields = ('date_joining',)
+
+
+class ApplyEgrantForm(forms.ModelForm):
+    class Meta:
+        model = Egrant
+        fields = ('course','academic_year','cast','yearly_income')
+
 

@@ -1,5 +1,5 @@
-{% extends 'student/student_page.html' %}
-{% block student %}
+{% extends 'parent/parent_page.html' %}
+{% block parent %}
 {% for message in messages %}
 <div class="alert alert-danger" role="alert">
 
@@ -68,7 +68,7 @@
         </div>
 
     </div>
-   <a class="btn btn-danger" href="{% url 'cancel_booking' status.id %}">CANCEL BOOKING</a>
+   <a class="btn btn-danger" href="{% url 'cancel_booking_parent' status.id %}">CANCEL BOOKING</a>
 {% endfor %}
 </div>
 
