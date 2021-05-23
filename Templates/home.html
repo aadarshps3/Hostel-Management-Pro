@@ -1,0 +1,332 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Hostel Management System</title>
+    <!--
+
+    Template 2098 Health
+
+    http://www.tooplate.com/view/2098-health
+
+    -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Tooplate">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/owl.theme.default.min.css' %}">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{% static 'home/css/tooplate-style.css' %}">
+
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+<!-- PRE LOADER -->
+<section class="preloader">
+    <div class="spinner">
+
+        <span class="spinner-rotate"></span>
+
+    </div>
+</section>
+
+
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 col-sm-5">
+
+            </div>
+
+            <div class="col-md-8 col-sm-7 text-align-right">
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+<!-- MENU -->
+<section class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+            </button>
+
+            <!-- lOGO TEXT HERE -->
+            <a href="/">Hostel Management System</a>
+        </div>
+
+        <!-- MENU LINKS -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#top" class="smoothScroll">Home</a></li>
+                <li><a href="#about" class="smoothScroll">About Us</a></li>
+                <li><a href="#team" class="smoothScroll">Warden</a></li>
+                <li><a href="#news" class="smoothScroll">Gallery</a></li>
+                <li><a href="#google-map" class="smoothScroll">Contact</a></li>
+                <li class="appointment-btn"><a href="{% url 'login_view' %}">Login</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- HOME -->
+<section id="home" class="slider" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+
+            <div class="owl-carousel owl-theme">
+                <div class="item item-first">
+                    <div class="caption">
+                        <div class="col-md-offset-1 col-md-10">
+                            <h3>Let's make your life happier</h3>
+                            <h1>Happy Staying</h1>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 col-sm-6">
+                <div class="about-info">
+
+                    <div class="wow fadeInUp" data-wow-delay="0.8s">
+                        <p>hostel facilities for Boys and Girls are provided in a homely atmosphere. Application for
+                            admission to the hostel shall be made in the prescribed form. Caring warden, Resident Tutors
+                            and Security ensure pleasant stay for the students to focus on their studies..</p>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="team" data-stellar-background-ratio="1" style="background-position: 0px 0px;">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12">
+                <div class="about-info">
+                    <h2 class="wow fadeInUp animated" data-wow-delay="0.1s"
+                        style=" text-align:center;visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                        Our Services</h2>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="images/team-image1.jpg" class="img-responsive" alt="">
+
+                    <div class="team-info">
+                        <h3>Attendance</h3>
+                        <p>Face Recognition based Attendance</p>
+                        <div class="team-contact-info">
+                            <p></p>
+                            <p></p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.4s"
+                     style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                    <img src="images/team-image2.jpg" class="img-responsive" alt="">
+
+                    <div class="team-info">
+                        <h3>Payments</h3>
+                        <p>Manage fees and online payments</p>
+                        <div class="team-contact-info">
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.6s"
+                     style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                    <img src="images/team-image3.jpg" class="img-responsive" alt="">
+
+                    <div class="team-info">
+                        <h3>Visitors</h3>
+                        <p>Manage student's visitors online</p>
+                        <div class="team-contact-info">
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- TEAM -->
+
+
+<!-- NEWS -->
+<section id="news" data-stellar-background-ratio="1" style="background-position: 0px 0px;">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 col-sm-6">
+                <div class="about-info">
+                    <h2 class="wow fadeInUp animated" data-wow-delay="0.1s"
+                        style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">Gallery</h2>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            {% for g in gallery %}
+            <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <a href="{% url 'gallery_detail' g.id %}">
+                        <img src="{{g.image1.url}}" class="img-responsive" style="width:450px; height:300px;" alt="">
+                    </a>
+                    <div class="team-info">
+                        <h3>{{g.title}}</h3>
+                    </div>
+                    <h3 style="text-align:center"></h3>
+                    <div class="team-info">
+                        <h3></h3>
+
+                    </div>
+
+                </div>
+                <br>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- MAKE AN APPOINTMENT -->
+
+
+<!-- GOOGLE MAP -->
+<section id="google-map">
+    <!-- How to change your own map point
+           1. Go to Google Maps
+           2. Click on your location point
+           3. Click "Share" and choose "Embed map" tab
+           4. Copy only URL and paste it within the src="" field below
+   -->
+    <!--    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4635.642452552428!2d75.09226409343!3d12.309380833430007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6c447c99122451be!2sKanhangad%20Government%20District%20Homoeo%20Hospital!5e0!3m2!1sen!2sin!4v1610079150572!5m2!1sen!2sin-->
+    <!--"-->
+    <!--            width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+    <!--</section>-->
+
+    <!-- FOOTER -->
+    <footer data-stellar-background-ratio="5">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 col-sm-4">
+                    <div class="footer-thumb">
+                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h4>
+                        <p>.</p>
+
+                        <div class="contact-info">
+                            <p><i class="fa fa-phone"></i> 0492-2937474</p>
+                            <!--                        <p><i class="fa fa-envelope-o"></i> <a href="#"></a></p>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4">
+
+                </div>
+
+                <div class="col-md-4 col-sm-4">
+                    <div class="footer-thumb">
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 border-top">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="footer-link">
+                            <a href="#home">Home</a>
+                            <a href="#news">Gallery</a>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2021 Hostel Management System
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-2 text-align-center">
+                        <div class="angle-up-btn">
+                            <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i
+                                    class="fa fa-angle-up"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="{% static 'home/js/jquery.js' %}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'home/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'home/js/wow.min.js' %}"></script>
+    <script src="{% static 'home/js/smoothscroll.js' %}"></script>
+    <script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'home/js/custom.js' %}"></script>
+
+</body>
+</html>

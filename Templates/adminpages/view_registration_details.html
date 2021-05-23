@@ -1,0 +1,108 @@
+{% extends 'admin/admin_page.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Income Detail</title>
+</head>
+<body>
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Student Registrations</strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">SINo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone No</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {% for student in students %}
+                <tr>
+
+                        <td>{{forloop.counter}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.phone_no}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.address}}</td>
+                        <td>{{student.user.username}}</td>
+                        <td>
+                            {% if student.approval_status == 0 %}
+                            <a style="color:green" href="{% url 'approve_student' student.id %}">Approve</a>/
+                            <a style="color:red" href="{% url 'reject_student' student.id %}">Reject</a>
+                            {% elif student.approval_status == True %}
+                            <p>Approved</p>
+                            {% else %}
+                            <p>Rejected</p>
+                            {% endif %}
+                        </td>
+
+                </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Parent Registrations</strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">SINo</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone No</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>    {% for parent in parents %}
+                <tr>
+
+                        <td>{{forloop.counter}}</td>
+                       <td>{{parent.student_name}}</td>
+                        <td>{{parent.name}}</td>
+                        <td>{{parent.phone_no}}</td>
+                        <td>{{parent.email}}</td>
+                        <td>{{parent.address}}</td>
+                        <td>{{parent.user.username}}</td>
+                        <td>
+                            {% if parent.approval_status == 0 %}
+                            <a style="color:green" href="{% url 'approve_parent' parent.id %}">Approve</a>/
+                            <a style="color:red" href="{% url 'reject_parent' parent.id %}">Reject</a>
+                            {% elif parent.approval_status == True %}
+                            <p>Approved</p>
+                            {% else %}
+                            <p>Rejected</p>
+                            {% endif %}
+                        </td>
+
+                </tr>  {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+{% endblock %}
