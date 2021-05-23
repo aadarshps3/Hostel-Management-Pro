@@ -1,72 +1,64 @@
-{% extends 'admin/admin_page.html' %}
+{% extends 'adminpages/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View E-Grant Details</title>
-</head>
-<body>
-    <div class="col-lg-8">
-    <div class="card">
-        <div class="card-header">
-            <strong class="card-title">E-grant Applications</strong>
+
+<div class="col-lg-8">
+        {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+       {{message}}
+    </div>
+    {% endfor %}
+
+        <div class="card ">
+        <div class="card-header bg-primary" >
+            <strong class="card-title " style="color:white">E-GRANT APPLICATIONS</strong>
         </div>
         <div class="card-body">
             <table class="table">
-  <thead >
-    <tr>
-      <th scope="col">SINo</th>
-      <th scope="col">Name</th>
-      <th scope="col">Course</th>
-      <th scope="col">Academic Year</th>
-      <th scope="col">Cast</th>
-      <th scope="col">Yearly Income</th>
-      <th scope="col">Action</th>
+                <thead>
+                <tr>
+                    <th scope="col">SINo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Academic Year</th>
+                    <th scope="col">Cast</th>
+                    <th scope="col">Yearly Income</th>
+                    <th scope="col">Action</th>
 
-    </tr>
-  </thead>
-  <tbody>
+                </tr>
+                </thead>
+                <tbody>
 
-       {% for egrant in egrants %}
-    <tr>
+                {% for egrant in egrants %}
+                <tr>
 
-        <td>{{forloop.counter}}</td>
-        <td>{{egrant.name.name}}</td>
-        <td>{{egrant.course}}</td>
-        <td>{{egrant.academic_year}}</td>
-        <td>{{egrant.cast}}</td>
-        <td>{{egrant.yearly_income}}</td>
-         <td>
-            {% if egrant.approval_status == 0 %}
-            <a style="color:green" href="{% url 'approve_egrant' egrant.id %}">Approve</a>/
-            <a style="color:red" href="{% url 'reject_egrant' egrant.id %}">Reject</a>
-            {% elif egrant.approval_status == True %}
-            <p>Approved</p>
-            {% else %}
-            <p>Rejected</p>
-            {% endif %}
-        </td>
-
-
-    </tr>
-        {% endfor %}
+                    <td>{{forloop.counter}}</td>
+                    <td>{{egrant.name.name}}</td>
+                    <td>{{egrant.course}}</td>
+                    <td>{{egrant.academic_year}}</td>
+                    <td>{{egrant.cast}}</td>
+                    <td>{{egrant.yearly_income}}</td>
+                    <td>
+                        {% if egrant.approval_status == 0 %}
+                        <a style="color:green" href="{% url 'approve_egrant' egrant.id %}">Approve</a>/
+                        <a style="color:red" href="{% url 'reject_egrant' egrant.id %}">Reject</a>
+                        {% elif egrant.approval_status == True %}
+                        <p>Approved</p>
+                        {% else %}
+                        <p>Rejected</p>
+                        {% endif %}
+                    </td>
 
 
+                </tr>
+                {% endfor %}
 
-    </tr>
 
-
-  </tbody>
-</table>
+                </tbody>
+            </table>
 
         </div>
     </div>
-    </div>
+</div>
 
-
-
-</body>
-</html>
 
 {% endblock %}

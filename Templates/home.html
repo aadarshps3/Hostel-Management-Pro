@@ -41,7 +41,7 @@
 
 
 <!-- HEADER -->
-<header>
+<header  style="background-color:#30419b;">
     <div class="container">
         <div class="row">
 
@@ -78,10 +78,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#top" class="smoothScroll">Home</a></li>
                 <li><a href="#about" class="smoothScroll">About Us</a></li>
-                <li><a href="#team" class="smoothScroll">Warden</a></li>
                 <li><a href="#news" class="smoothScroll">Gallery</a></li>
                 <li><a href="#google-map" class="smoothScroll">Contact</a></li>
-                <li class="appointment-btn"><a href="{% url 'login_view' %}">Login</a></li>
+                <li style="background-color:#30419b;"><a style="color:white" href="{% url 'accounts:login_view' %}">Login</a></li>
             </ul>
         </div>
 
@@ -98,7 +97,7 @@
                 <div class="item item-first">
                     <div class="caption">
                         <div class="col-md-offset-1 col-md-10">
-                            <h3>Let's make your life happier</h3>
+                            <h3></h3>
                             <h1>Happy Staying</h1>
 
                         </div>
@@ -113,15 +112,15 @@
 
 
 <!-- ABOUT -->
-<section id="about">
-    <div class="container">
+<section id="about" >
+    <div class="container" style="background-color:#dce7ff;">
         <div class="row">
 
             <div class="col-md-6 col-sm-6">
                 <div class="about-info">
 
                     <div class="wow fadeInUp" data-wow-delay="0.8s">
-                        <p>hostel facilities for Boys and Girls are provided in a homely atmosphere. Application for
+                        <p>Hostel facilities for Boys and Girls are provided in a homely atmosphere. Application for
                             admission to the hostel shall be made in the prescribed form. Caring warden, Resident Tutors
                             and Security ensure pleasant stay for the students to focus on their studies..</p>
 
@@ -154,8 +153,8 @@
                     <img src="images/team-image1.jpg" class="img-responsive" alt="">
 
                     <div class="team-info">
-                        <h3>Attendance</h3>
-                        <p>Face Recognition based Attendance</p>
+                        <h3>Room Booking</h3>
+                        <p>Book Hostel Rooms</p>
                         <div class="team-contact-info">
                             <p></p>
                             <p></p>
@@ -189,8 +188,8 @@
                     <img src="images/team-image3.jpg" class="img-responsive" alt="">
 
                     <div class="team-info">
-                        <h3>Visitors</h3>
-                        <p>Manage student's visitors online</p>
+                        <h3>E-grant</h3>
+                        <p>Get fee reduction </p>
                         <div class="team-contact-info">
 
                         </div>
@@ -207,7 +206,7 @@
 
 
 <!-- NEWS -->
-<section id="news" data-stellar-background-ratio="1" style="background-position: 0px 0px;">
+<section id="news" data-stellar-background-ratio="1" style="background-position: 0px 0px;background-color:#dce7ff;">
     <div class="container">
         <div class="row">
 
@@ -219,15 +218,15 @@
             </div>
 
             <div class="clearfix"></div>
-            {% for g in gallery %}
+
             <div class="col-md-4 col-sm-6">
                 <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
                      style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <a href="{% url 'gallery_detail' g.id %}">
-                        <img src="{{g.image1.url}}" class="img-responsive" style="width:450px; height:300px;" alt="">
-                    </a>
+
+                        <img src="{% static 'home/images/home/campus.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+
                     <div class="team-info">
-                        <h3>{{g.title}}</h3>
+                        <h3></h3>
                     </div>
                     <h3 style="text-align:center"></h3>
                     <div class="team-info">
@@ -238,7 +237,97 @@
                 </div>
                 <br>
             </div>
-            {% endfor %}
+             <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+
+                        <img src="{% static 'home/images/home/campus2.jpg' %}"  class="img-responsive" style="width:450px; height:300px;" alt="">
+
+                    <div class="team-info">
+                        <h3></h3>
+                    </div>
+                    <h3 style="text-align:center"></h3>
+                    <div class="team-info">
+                        <h3></h3>
+
+                    </div>
+
+                </div>
+                <br>
+            </div>
+             <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+
+                        <img src="{% static 'home/images/home/library.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+
+                    <div class="team-info">
+                        <h3></h3>
+                    </div>
+                    <h3 style="text-align:center"></h3>
+                    <div class="team-info">
+                        <h3></h3>
+
+                    </div>
+
+                </div>
+                <br>
+            </div>
+             <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+
+                        <img src="{% static 'home/images/home/mess2.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+
+                    <div class="team-info">
+                        <h3></h3>
+                    </div>
+                    <h3 style="text-align:center"></h3>
+                    <div class="team-info">
+                        <h3></h3>
+
+                    </div>
+
+                </div>
+                <br>
+            </div>
+             <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+
+                        <img src="{% static 'home/images/home/room2.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+
+                    <div class="team-info">
+                        <h3></h3>
+                    </div>
+                    <h3 style="text-align:center"></h3>
+                    <div class="team-info">
+                        <h3></h3>
+
+                    </div>
+
+                </div>
+                <br>
+            </div>
+             <div class="col-md-4 col-sm-6">
+                <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
+                     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+
+                        <img src="{% static 'home/images/home/room3.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+
+                    <div class="team-info">
+                        <h3></h3>
+                    </div>
+                    <h3 style="text-align:center"></h3>
+                    <div class="team-info">
+                        <h3></h3>
+
+                    </div>
+
+                </div>
+                <br>
+            </div>
+
         </div>
     </div>
 </section>

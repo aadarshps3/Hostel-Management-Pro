@@ -1,10 +1,15 @@
-{% extends 'parent/parent_page.html' %}
+{% extends 'parent/base.html' %}
 {% block parent %}
 
 <div class="col-lg-8">
+    {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
     <div class="card">
-        <div class="card-header">
-            <strong class="card-title">Hostel Details</strong>
+        <div class="card-header bg-primary">
+            <strong class="card-title" style="color:white">HOSTEL DETAILS</strong>
         </div>
         <div class="card-body">
             {% for detail in details %}
@@ -93,10 +98,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--                 -->
-                    <!--                        <label>:<img src="{{detail.image1.url}}"></label>-->
-                    <!--                        <label><img src="{{detail.image2.url}}"></label>-->
-                    <!--                        <label><img src="{{detail.image3.url}}"></label>-->
 
                 </div>
             </div>

@@ -44,7 +44,26 @@
         <nav class="navbar-custom">
             <ul class="navbar-right list-inline float-right mb-0">
 
+                <li class="dropdown notification-list list-inline-item">
+                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#"
+                       role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="mdi mdi-bell-outline noti-icon"></i>
+                        <span class="badge badge-pill badge-danger noti-icon-badge"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-lg px-1">
+                        <!-- item-->
+                        <h6 class="dropdown-item-text">
+                            Notifications
+                        </h6>
 
+
+                        <!-- All-->
+                        <a href="{% url 'notification_view_student'  %}"
+                           class="dropdown-item text-center notify-all text-primary">
+                            View all <i class="fi-arrow-right"></i>
+                        </a>
+                    </div>
+                </li>
                 <!-- full screen -->
                 <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
                     <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
@@ -62,6 +81,7 @@
                             {{request.user}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                            <a class="dropdown-item" href="{% url 'profile' %}"><i class="mdi mdi-account-circle"></i> Profile</a>
                             <!-- item-->
 
                             <div class="dropdown-divider"></div>
@@ -97,7 +117,7 @@
                 <ul class="metismenu" id="side-menu">
                     <li class="menu-title">Menu</li>
                     <li>
-                        <a href="{% url 'parent_page' %}" class="waves-effect">
+                        <a href="{% url 'student_page' %}" class="waves-effect">
                             <i class="icon-accelerator"></i> Dashboard
                         </a>
                     </li>
@@ -107,7 +127,7 @@
                         <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Hostel Details <span
                                 class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'hostel_details_parent' %}">View Hostel Detail</a></li>
+                            <li><a href="{% url 'hostel_student' %}">View Hostel Detail</a></li>
 
 
                         </ul>
@@ -116,8 +136,8 @@
                         <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Room Booking <span
                                 class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'book_room_parent' %}">Book Now </a></li>
-                            <li><a href="{% url 'booking_status_parent' %}">Booking
+                            <li><a href="{% url 'book_room' %}">Book Now </a></li>
+                            <li><a href="{% url 'booking_status' %}">Booking
                                 Status</a></li>
 
 
@@ -127,8 +147,8 @@
                         <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Fee Payment<span
                                 class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'parent_fee_view' %}">View Fee </a></li>
-                            <li><a href="{% url 'payment_details_parent' %}">Payment Details</a></li>
+                            <li><a href="{% url 'view_fee_student' %}">View Fee </a></li>
+                            <li><a href="{% url 'payment_details' %}">Payment Details</a></li>
 
 
                         </ul>
@@ -137,41 +157,56 @@
                         <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Attendance<span
                                 class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'student_attendance' %}">Attendance Details</a></li>
+                            <li><a href="{% url 'view_attendance_student' %}">Attendance Details</a></li>
+
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span>  Food Details<span
+                                class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'view_food_student' %}">View Food Updates</a></li>
+
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span>Complaints<span
+                                class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'send_complaint' %}">Send Complaint</a></li>
+                            <li><a href="{% url 'view_send_compalints' %}">view Complaint</a></li>
 
 
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Attendance<span
+                        <a href="javascript:void(0);" class="waves-effect"><i
+                                class="icon-paper-sheet"></i><span>Review<span
                                 class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'student_attendance' %}">View Attendance</a></li>
+                            <li><a href="{% url 'add_review' %}">Add Review</a></li>
 
 
                         </ul>
                     </li>
+
                     <li>
                         <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> E-grant<span
                                 class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'student_egrant' %}">View e-grant Details</a></li>
+                            <li><a href="{% url 'apply_egrant' %}">Apply For E-grant</a></li>
+                            <li><a href="{% url 'egrant_status' %}">Application Status</a></li>
 
 
                         </ul>
                     </li>
-                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Staff Details<span
-                                class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="{% url 'staff_details_parent' %}">Staffs</a></li>
-
-
-                        </ul>
-                    </li>
-
 
                 </ul>
+
 
             </div>
             <!-- Sidebar -->
@@ -197,7 +232,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-right">
-                                <li class="breadcrumb-item"><a href="{% url 'parent_page' %}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'student_page' %}">Home</a></li>
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
@@ -208,7 +243,7 @@
 
                 <div class="row">
 
-                 {% block parent %} {% endblock %}
+                    {% block student %} {% endblock %}
 
                 </div>
 

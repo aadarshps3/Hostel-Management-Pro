@@ -1,16 +1,16 @@
-{% extends 'admin/admin_page.html' %}
+{% extends 'adminpages/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Income Detail</title>
-</head>
-<body>
+
    <div class="col-lg-8">
+           {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+       {{message}}
+    </div>
+    {% endfor %}
     <div class="card">
-        <div class="card-header">
-            <strong class="card-title">Income Deatails</strong>
+
+        <div class="card-header  bg-primary" >
+            <strong class="card-title " style="color:white">INCOME DETAILS</strong>
         </div>
         <div class="card-body">
             <table class="table">
@@ -45,9 +45,5 @@
     </div>
    </div>
 
-
-
-</body>
-</html>
 
 {% endblock %}

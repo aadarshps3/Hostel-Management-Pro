@@ -46,6 +46,8 @@ urlpatterns = [
 
 
     path('student_page/', studentviews.student_page, name='student_page'),
+    path('profile/', studentviews.profile, name='profile'),
+    path('update_profile/', studentviews.update_profile, name='update_profile'),
     path('view_fee_student/', studentviews.view_fee, name='view_fee_student'),
     path('pay_fee/', studentviews.pay_fee, name='pay_fee'),
     path('view_attendance_student/', studentviews.view_attendance, name='view_attendance_student'),
@@ -61,6 +63,7 @@ urlpatterns = [
     path('apply_egrant/', studentviews.apply_egrant, name='apply_egrant'),
     path('egrant_status/', studentviews.egrant_status, name='egrant_status'),
     path('pay_fee/<int:id>/', studentviews.pay_fee, name='pay_fee'),
+    path('do_payment/<amount>/<int:id>/', studentviews.do_payment, name='do_payment'),
     path('payment_details/', studentviews.payment_details, name='payment_details'),
 
 
@@ -75,6 +78,6 @@ urlpatterns = [
     path('parent_fee_view/', parentviews.parent_fee_view, name='parent_fee_view'),
     path('parent_pay_fee/<int:id>/', parentviews.parent_pay_fee, name='parent_pay_fee'),
     path('payment_details_parent/', parentviews.payment_details_parent, name='payment_details_parent'),
-
+    path('do_payment_parent/<amount>/<int:id>/', parentviews.do_payment_parent, name='do_payment_parent'),
 
 ]

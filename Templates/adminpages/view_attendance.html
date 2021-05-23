@@ -1,57 +1,51 @@
-{% extends 'admin/admin_page.html' %}
+{% extends 'adminpages/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Student Attendance</title>
-</head>
-<body>
 
-<a  class=" btn btn-info" href="{% url 'add_attendance' %}">Update Attendance</a>
-<br><br>
-   <div class="col-lg-8">
+<div class="col-lg-8">
+        {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+       {{message}}
+    </div>
+    {% endfor %}
     <div class="card">
-        <div class="card-header">
-            <strong class="card-title">View Student Attendance</strong>
+
+        <div class="card-header bg-primary" >
+            <strong class="card-title " style="color:white">STUDENT ATTENDANCE</strong>
         </div>
         <div class="card-body">
             <table class="table">
-  <thead >
-    <tr>
-      <th scope="col">SINo</th>
-      <th scope="col">Name</th>
-      <th scope="col">Initial Day</th>
-      <th scope="col">Final Day</th>
-      <th scope="col">Percentage</th>
+                <thead>
+                <tr>
+                    <th scope="col">SINo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Initial Day</th>
+                    <th scope="col">Final Day</th>
+                    <th scope="col">Percentage</th>
 
 
-    </tr>
-  </thead>
-  <tbody>
-       {% for attendance in attendances %}
-    <tr>
+                </tr>
+                </thead>
+                <tbody>
+                {% for attendance in attendances %}
+                <tr>
 
-        <td>{{forloop.counter}}</td>
-        <td>{{attendance.name}}</td>
-        <td>{{attendance.initial_day}}</td>
-        <td>{{attendance.final_day}}</td>
-        <td>{{attendance.percentage}}</td>
-
-
-    </tr>
-        {% endfor %}
-
-  </tbody>
-</table>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{attendance.name}}</td>
+                    <td>{{attendance.initial_day}}</td>
+                    <td>{{attendance.final_day}}</td>
+                    <td>{{attendance.percentage}}</td>
 
 
-</div>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+
+        </div>
     </div>
-   </div>
+</div>
 
-
-</body>
-</html>
 
 {% endblock %}

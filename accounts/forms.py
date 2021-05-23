@@ -2,96 +2,103 @@ import re
 
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 from django.db import transaction
 from django import forms
-from accounts.models import User, AdminRegister, Student,Parent
+from accounts.models import User, Student, Parent
 
 
 class DateInput(forms.DateInput):
     input_type = 'date'
 
+
 def phone_number_validator(value):
     if not re.compile(r'^[7-9]\d{9}$').match(value):
         raise ValidationError('This is Not a Valid Phone Number')
 
-class AdminSignUpForm(UserCreationForm):
-    name = forms.CharField()
-    email = forms.CharField()
-    phone_no = forms.CharField(validators=[phone_number_validator] )
-    address = forms.CharField()
-    password1 = forms.CharField(label="Password", widget=forms.PasswordInput, )
-    password2 = forms.CharField(label="confirm Password", widget=forms.PasswordInput, )
 
-    class Meta(UserCreationForm.Meta):
+class UserRegister(UserCreationForm):
+    username = forms.CharField()
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput, )
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput, )
+
+    class Meta:
         model = User
-
-    @transaction.atomic
-    def save(self):
-        user = super().save(commit=False)
-        user.is_staff = True
-        user.is_admin = True
-        user.save()
-        adm = AdminRegister.objects.create(user=user)
-        adm.role = "Admin"
-        adm.name = self.cleaned_data.get('name')
-        adm.email = self.cleaned_data.get('email')
-        adm.phone_no = self.cleaned_data.get('phone_no')
-        adm.address = self.cleaned_data.get('address')
-        adm.save()
-        return user
+        fields = ('username', 'password1', 'password2')
 
 
-class StudentSignUpForm(UserCreationForm):
-    name = forms.CharField()
-    email = forms.CharField()
+class StudentSignUpForm(forms.ModelForm):
+    email = forms.CharField(validators=[
+        RegexValidator(regex='^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$', message='Please Enter a Valid Email')])
     phone_no = forms.CharField(validators=[phone_number_validator])
-    address = forms.CharField()
-    password1 = forms.CharField(label="Password", widget=forms.PasswordInput,)
-    password2 = forms.CharField(label="confirm Password", widget=forms.PasswordInput,)
 
-    class Meta(UserCreationForm.Meta):
-        model = User
+    class Meta:
+        model = Student
+        fields = ('name', 'email', 'phone_no', 'address')
 
-    @transaction.atomic
-    def save(self):
-        user = super().save(commit=False)
-        user.is_staff = False
-        user.is_student = True
-        user.save()
-        student = Student.objects.create(user=user)
-        student.role = 'Student'
-        student.name = self.cleaned_data.get('name')
-        student.email = self.cleaned_data.get('email')
-        student.phone_no = self.cleaned_data.get('phone_no')
-        student.address = self.cleaned_data.get('address')
-        student.save()
-        return user
+    def clean_email(self):
+        mail = self.cleaned_data["email"]
+        email_qs_t = Parent.objects.filter(email=mail)
+        email_qs_s = Student.objects.filter(email=mail)
+        if email_qs_t.exists():
+            raise forms.ValidationError("This email already registered")
+        if email_qs_s.exists():
+            raise forms.ValidationError("This email already registered")
+        return mail
+
+    def clean_phone_no(self):
+        contact_no = self.cleaned_data["phone_no"]
+        contact_qs_s = Student.objects.filter(phone_no=contact_no)
+        contact_qs_t = Parent.objects.filter(phone_no=contact_no)
+
+        if contact_qs_s.exists():
+            raise forms.ValidationError('This Phone Number already registered')
+        if contact_qs_t.exists():
+            raise forms.ValidationError('This Phone Number already registered')
+
+        return contact_no
 
 
-class ParentSignUpForm(UserCreationForm):
+
+
+class ParentSignUpForm(forms.ModelForm):
     student_name = forms.ModelChoiceField(queryset=Student.objects.all())
-    name = forms.CharField()
-    email = forms.CharField()
+
+    email = forms.CharField(validators=[
+        RegexValidator(regex='^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$', message='Please Enter a Valid Email')])
+
     phone_no = forms.CharField(validators=[phone_number_validator])
-    address = forms.CharField()
-    password1 = forms.CharField(label="Password", widget=forms.PasswordInput,)
-    password2 = forms.CharField(label="confirm Password", widget=forms.PasswordInput,)
 
-    class Meta(UserCreationForm.Meta):
-        model = User
+    class Meta:
+        model = Parent
+        fields = ('student_name', 'name', 'email', 'phone_no', 'address')
 
-    @transaction.atomic
-    def save(self):
-        user = super().save(commit=False)
-        user.is_staff = False
-        user.is_parent = True
-        user.save()
-        parent = Parent.objects.create(user=user)
-        parent.role = 'Parent'
-        parent.student_name = self.cleaned_data.get('student_name')
-        parent.name = self.cleaned_data.get('name')
-        parent.email = self.cleaned_data.get('email')
-        parent.phone_no = self.cleaned_data.get('phone_no')
-        parent.address = self.cleaned_data.get('address')
-        parent.save()
-        return user
+    def clean_email(self):
+        mail = self.cleaned_data["email"]
+        email_qs_t = Parent.objects.filter(email=mail)
+        email_qs_s = Student.objects.filter(email=mail)
+        if email_qs_t.exists():
+            raise forms.ValidationError("This email already registered")
+        if email_qs_s.exists():
+            raise forms.ValidationError("This email already registered")
+        return mail
+
+    def clean_phone_no(self):
+        contact_no = self.cleaned_data["phone_no"]
+        contact_qs_s = Student.objects.filter(phone_no=contact_no)
+        contact_qs_t = Parent.objects.filter(phone_no=contact_no)
+
+        if contact_qs_s.exists():
+            raise forms.ValidationError('This Phone Number already registered')
+        if contact_qs_t.exists():
+            raise forms.ValidationError('This Phone Number already registered')
+        return contact_no
+
+    def clean_student_name(self):
+        student = self.cleaned_data["student_name"]
+        student_qs = Parent.objects.filter(student_name=student)
+
+        if student_qs.exists():
+            raise forms.ValidationError('Parent Already registered for student {}'.format(student))
+
+        return student

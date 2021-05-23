@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from accounts.models import Parent, Student
+from accounts.models import Parent, Student, User
 
 
 class HostelDetails(models.Model):
@@ -16,10 +16,11 @@ class HostelDetails(models.Model):
 
 
 class BookRoom(models.Model):
-    name = models.CharField(max_length=50)
+    student = models.ForeignKey(Student,on_delete=models.CASCADE)
     date_joining = models.DateField()
     booking_date = models.DateField(auto_now_add=True)
     status = models.BooleanField(default=0)
+    booked_by = models.ForeignKey(User,on_delete=models.CASCADE)
 
 
 class Food(models.Model):
@@ -58,14 +59,13 @@ class Fees(models.Model):
     security = models.IntegerField()
     mess = models.IntegerField()
     others = models.IntegerField()
-    e_grant = models.ForeignKey(Egrant, on_delete=models.CASCADE,)
     payment_status = models.BooleanField(default=False)
+    paid_by = models.CharField(max_length=100)
+    paid_date = models.DateField(null=True)
+    payment = models.CharField(max_length=100)
 
     def get_total_fee(self):
-        if self.e_grant == True:
-            return self.water + self.electricity + self.caution_deposit + self.security + self.mess + self.others
 
-        else:
             return self.accommodation + self.water + self.electricity + self.caution_deposit + self.security + self.mess + self.others
 
     def __unicode__(self):
@@ -73,20 +73,21 @@ class Fees(models.Model):
 
 
 class Payment(models.Model):
-    student_name = models.ForeignKey(Student, on_delete=models.CASCADE)
-    paid_by = models.CharField(max_length=100)
-    date = models.DateField()
+    bill = models.ForeignKey(Fees, on_delete=models.CASCADE,related_name='fee_payment')
     payment = models.CharField(max_length=100)
-    payment_status = models.BooleanField(default=False)
+    card_no = models.CharField(max_length=30)
+    card_cvv = models.CharField(max_length=30)
+    expiry_month = models.CharField(max_length=20)
+    expiry_year = models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.paid_by
+
 
 
 class Notification(models.Model):
     to = models.CharField(max_length=100)
     notification = models.TextField(max_length=100)
     time = models.TimeField()
+    timestamp = models.DateField(auto_now_add=True,null=True)
 
 
 class Attendance(models.Model):

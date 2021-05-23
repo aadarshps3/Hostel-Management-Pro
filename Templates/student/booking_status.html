@@ -1,16 +1,16 @@
-{% extends 'student/student_page.html' %}
+{% extends 'student/base.html' %}
 {% block student %}
-{% for message in messages %}
+
+
+<div class="col-lg-8">
+    <div class="card">{% for message in messages %}
 <div class="alert alert-danger" role="alert">
 
   {{message}}
     </div>
     {% endfor %}
-
-<div class="col-lg-8">
-    <div class="card">
-        <div class="card-header">
-            <strong class="card-title">Booking Details</strong>
+        <div class="card-header bg-primary">
+            <strong class="card-title" style="color:white">BOOKING DETAILS</strong>
         </div>
         <div class="card-body">
             {% for status in statuss %}
@@ -20,7 +20,17 @@
                         <label>Name</label>
                     </div>
                     <div class="col-lg-8">
-                        <label>:{{status.name}}</label>
+                        <label>:{{status.student}}</label>
+                    </div>
+                </div>
+            </div>
+                   <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Booked By</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label>:{{status.booked_by}}</label>
                     </div>
                 </div>
             </div>
@@ -52,11 +62,11 @@
                     <div class="col-lg-8">
 
                             {% if status.status == 0 %}
-                            <label>:Booking Pending</label>
+                            <button class="btb btn-warning">Booking Pending</button>
                             {% elif status.status == False %}
-                             <label>: Room Not Available</label>
+                             <button class="btn btn-danger"> Room Not Available</button>
                             {% else %}
-                            <label>: Booking Confirmed</label>
+                            <button class="btn btn-success"> Booking Confirmed</button>
                             {% endif %}
 
 
@@ -68,7 +78,9 @@
         </div>
 
     </div>
+    {% if status.status == 0 %}
    <a class="btn btn-danger" href="{% url 'cancel_booking' status.id %}">CANCEL BOOKING</a>
+    {% endif %}
 {% endfor %}
 </div>
 

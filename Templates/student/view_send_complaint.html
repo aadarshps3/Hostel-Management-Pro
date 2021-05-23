@@ -1,55 +1,51 @@
-{% extends 'student/student_page.html' %}
+{% extends 'student/base.html' %}
 {% block student %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Income Detail</title>
-</head>
-<body>
+
 
 <div class="col-lg-8">
+    {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
     <div class="card">
-        <div class="card-header">
-            <strong class="card-title">Complaints</strong>
+        <div class="card-header bg-primary">
+            <strong class="card-title" style="color:white">COMPLAINTS</strong>
         </div>
         <div class="card-body">
             <table class="table">
 
-  <thead >
-    <tr>
-      <th scope="col">SINo</th>
-      <th scope="col">Name</th>
-      <th scope="col">Subject</th>
-      <th scope="col">Complaint</th>
-<!--      <th scope="col">Update</th>-->
-<!--      <th scope="col">Delete</th>-->
+                <thead>
+                <tr>
+                    <th scope="col">SINo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Complaint</th>
+                    <!--      <th scope="col">Update</th>-->
+                    <!--      <th scope="col">Delete</th>-->
 
-    </tr>
-  </thead>
-  <tbody>
-       {% for complaint in complaints %}
-    <tr>
+                </tr>
+                </thead>
+                <tbody>
+                {% for complaint in complaints %}
+                <tr>
 
-        <td>{{forloop.counter}}</td>
-        <td>{{complaint.name}}</td>
-        <td>{{complaint.subject}}</td>
-        <td>{{complaint.complaint}}</td>
-
-
-    </tr>
-        {% endfor %}
-
-  </tbody>
-</table>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{complaint.name}}</td>
+                    <td>{{complaint.subject}}</td>
+                    <td>{{complaint.complaint}}</td>
 
 
-</div>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+
+        </div>
     </div>
 </div>
 
-
-</body>
-</html>
 
 {% endblock %}

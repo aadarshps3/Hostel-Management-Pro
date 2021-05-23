@@ -1,50 +1,45 @@
-{% extends 'admin/admin_page.html' %}
+{% extends 'adminpages/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Hostel Detail</title>
-</head>
-<body>
-   <div class="col-lg-8">
-    <div class="card">
-        <div class="card-header">
-            <strong class="card-title">Student Reviews</strong>
+
+<div class="col-lg-8">
+        {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+       {{message}}
+    </div>
+    {% endfor %}
+    <div class="card ">
+        <div class="card-header bg-primary" >
+            <strong class="card-title " style="color:white">STUDENT REVIEWS</strong>
         </div>
         <div class="card-body">
             <table class="table">
-  <thead >
-    <tr>
-      <th scope="col">SINo</th>
-      <th scope="col">Name</th>
-      <th scope="col">Review</th>
+                <thead>
+                <tr>
+                    <th scope="col">SINo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Review</th>
 
 
-    </tr>
-  </thead>
-  <tbody>
-       {% for review in reviews %}
-    <tr>
+                </tr>
+                </thead>
+                <tbody>
+                {% for review in reviews %}
+                <tr>
 
-        <td>{{forloop.counter}}</td>
-        <td>{{review.name}}</td>
-        <td>{{review.review}}</td>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{review.name}}</td>
+                    <td>{{review.review}}</td>
 
 
-    </tr>
-        {% endfor %}
+                </tr>
+                {% endfor %}
 
-  </tbody>
-</table>
+                </tbody>
+            </table>
 
         </div>
     </div>
-   </div>
+</div>
 
-
-
-</body>
-</html>
 
 {% endblock %}

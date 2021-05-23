@@ -1,16 +1,16 @@
-{% extends 'admin/admin_page.html' %}
+{% extends 'adminpages/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Income Detail</title>
-</head>
-<body>
+
 <div class="col-lg-10">
-    <div class="card">
-        <div class="card-header">
-            <strong class="card-title">Fee Details</strong>
+        {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+       {{message}}
+    </div>
+    {% endfor %}
+
+        <div class="card ">
+        <div class="card-header bg-primary" >
+            <strong class="card-title " style="color:white">FEE DETAILS</strong>
         </div>
         <div class="card-body">
             <table class="table">
@@ -33,16 +33,16 @@
 
                     <td>{{forloop.counter}}</td>
                     <td>{{fee.name}}</td>
-                    <td>{{fee.name}}</td>
+                    <td>{{fee.accommodation}}</td>
                     <td>{{fee.electricity}}</td>
                     <td>{{fee.caution_deposit}}</td>
                     <td>{{fee.security}}</td>
                     <td>{{fee.mess}}</td>
                     <td>{{fee.others}}</td>
                     <td>{% if fee.payment_status == True %}
-                        <p>Fee Paid</p>
+                        <button class="btn btn-success">Fee Paid</button>
                         {% else %}
-                        <p>Payment Pending </p>
+                        <button class="btn btn-warning">Payment Pending </button>
 
                         {% endif %}
                     </td>
@@ -57,7 +57,6 @@
 </div>
 
 
-</body>
-</html>
+
 
 {% endblock %}

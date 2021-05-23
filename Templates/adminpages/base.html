@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Fine Arts Management</title>
+    <title>Hostel Management System</title>
     <meta content="Responsive admin theme build on top of Bootstrap 4" name="description"/>
     <meta content="Themesdesign" name="author"/>
     <link rel="shortcut icon" href="{% static 'assets1/images/favicon.ico' %}">
@@ -31,9 +31,9 @@
 
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="{% url 'student_home' %}" class="logo">
+            <a href="{% url 'admin_page' %}" class="logo">
                     <span class="logo-light">
-                            <i class="mdi mdi-camera-control"></i> Fine Arts
+                            <i class="mdi mdi-camera-control"></i> Hostel
                         </span>
                 <span class="logo-sm">
                             <i class="mdi mdi-camera-control"></i>
@@ -65,7 +65,7 @@
                             <!-- item-->
 
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="{% url 'logout_view' %}"><i
+                            <a class="dropdown-item text-danger" href="{% url 'accounts:logout_view' %}"><i
                                     class="mdi mdi-power text-danger"></i> Logout</a>
                         </div>
                     </div>
@@ -97,17 +97,18 @@
                 <ul class="metismenu" id="side-menu">
                     <li class="menu-title">Menu</li>
                     <li>
-                        <a href="{% url 'student_home' %}" class="waves-effect">
+                        <a href="{% url 'admin_page' %}" class="waves-effect">
                             <i class="icon-accelerator"></i> Dashboard
                         </a>
                     </li>
 
 
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> TEAMS <span
+                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Hostel Details <span
                                 class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'teams_view_student' %}">Team Members</a></li>
+                            <li><a href="{% url 'add_hostel_detail' %}">Add Hostel Detail </a></li>
+                            <li><a href="{% url 'view_hostel_detail' %}">View Hostel Detail</a></li>
 
 
                         </ul>
@@ -115,36 +116,106 @@
 
                     <li>
                         <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> PROGRAM <span class="float-right menu-arrow"><i
+                                class="icon-spread"></i><span> Food Details <span class="float-right menu-arrow"><i
                                 class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'program_view_student' %}">Program List</a></li>
-
+                            <li><a href="{% url 'add_food_detail' %}">Add Food</a></li>
+                            <li><a href="{% url 'view_food_detail' %}">View food</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i
+                                class="icon-spread"></i><span> Complaints <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'view_complaint' %}">View Complaints</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i
+                                class="icon-spread"></i><span> Income <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'add_income_detail' %}">Add Income</a></li>
+                            <li><a href="{% url 'view_income_detail' %}">View Income</a></li>
 
                         </ul>
                     </li>
-                      <li>
+
+                    <li>
                         <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> REGISTRATION <span class="float-right menu-arrow"><i
+                                class="icon-spread"></i><span> Payment <span class="float-right menu-arrow"><i
                                 class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'registered_programs' %}">Registrations</a></li>
-
+                            <li><a href="{% url 'add_fee' %}">Add Fee</a></li>
+                            <li><a href="{% url 'view_fee' %}">View Fee</a></li>
+                            <li><a href="{% url 'view_payment' %}">View Payment</a></li>
 
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> RESULTS <span class="float-right menu-arrow"><i
+                                class="icon-spread"></i><span> Notification <span class="float-right menu-arrow"><i
                                 class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="{% url 'result_student' %}">View Results</a></li>
-                            <li><a href="{% url 'scoreboard_s' %}">ScoreBoard</a></li>
+                            <li><a href="{% url 'add_notification' %}">Add Notifications</a></li>
+                            <li><a href="{% url 'view_notification' %}">View Notifications</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i
+                                class="icon-spread"></i><span> Attendance <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'add_attendance' %}">Add Attendance</a></li>
+                            <li><a href="{% url 'view_attendance' %}">View Attendance</a></li>
 
                         </ul>
                     </li>
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i
+                                class="icon-spread"></i><span> Staff <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'add_staff' %}">Add Staff</a></li>
+                            <li><a href="{% url 'view_staff' %}">View Staff</a></li>
+
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i
+                                class="icon-spread"></i><span> E-grant <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'view_egrant_details' %}">View e-grant Applications</a></li>
 
 
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i
+                                class="icon-spread"></i><span> Registration <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'view_registration_details' %}">View Registration</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i
+                                class="icon-spread"></i><span> Bookings <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'bookings' %}">View Bookings</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i
+                                class="icon-spread"></i><span> Review <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'review' %}">View Reviews</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
             </div>
@@ -171,7 +242,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-right">
-                                <li class="breadcrumb-item"><a href="{% url 'student_home' %}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'admin_page' %}">Home</a></li>
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
@@ -196,7 +267,7 @@
         <!-- content -->
 
         <footer class="footer">
-            © 2021 Fine Arts Management System <span class="d-none d-sm-inline-block">  <i
+            © 2021 Hostel Management System <span class="d-none d-sm-inline-block">  <i
                 class="mdi mdi-heart text-danger"></i> </span>.
         </footer>
 

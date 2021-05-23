@@ -1,16 +1,17 @@
-{% extends 'student/student_page.html' %}
+{% extends 'student/base.html' %}
 {% block student %}
 {% for message in messages %}
-<div class="alert alert-danger" role="alert">
 
-  {{message}}
-    </div>
-    {% endfor %}
 
 <div class="col-lg-8">
+        {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+       {{message}}
+    </div>
+    {% endfor %}
     <div class="card">
-        <div class="card-header">
-            <strong class="card-title">E-grant Details</strong>
+       <div class="card-header bg-primary">
+            <strong class="card-title" style="color:white">E-GRANT DETAILS</strong>
         </div>
         <div class="card-body">
             {% for egrant in egrants %}
@@ -72,11 +73,11 @@
                     <div class="col-lg-8">
 
                             {% if egrant.approval_status == 0 %}
-                            <label>:Approval Pending</label>
+                            <button class="btn btn-warning">Approval Pending</button>
                             {% elif egrant.approval_status == False %}
-                             <label>:Rejected </label>
+                             <button class="btn btn-danger">Rejected </button>
                             {% else %}
-                            <label>:Approved </label>
+                            <button class="btn btn-primary">Approved </button>
                             {% endif %}
 
 
