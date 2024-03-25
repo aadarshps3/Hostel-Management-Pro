@@ -49,6 +49,7 @@
                 <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
                     <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
                         <i class="mdi mdi-arrow-expand-all noti-icon"></i>
+
                     </a>
                 </li>
 
@@ -117,8 +118,7 @@
                                 class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
                             <li><a href="{% url 'book_room_parent' %}">Book Now </a></li>
-                            <li><a href="{% url 'booking_status_parent' %}">Booking
-                                Status</a></li>
+                            <li><a href="{% url 'booking_status_parent' %}">Booking Status</a></li>
 
 
                         </ul>
@@ -143,20 +143,21 @@
                         </ul>
                     </li>
 
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> E-grant<span
-                                class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="{% url 'student_egrant' %}">View e-grant Details</a></li>
 
-
-                        </ul>
-                    </li>
                      <li>
                         <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Staff Details<span
                                 class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
                             <li><a href="{% url 'staff_details_parent' %}">Staffs</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-paper-sheet"></i><span> Delete Account<span
+                                class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'delete_profile' %}">Delete Now</a></li>
 
 
                         </ul>

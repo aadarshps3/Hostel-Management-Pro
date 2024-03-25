@@ -12,77 +12,60 @@
                 <strong class="card-title" style="color:white">FEE </strong>
         </div>
         <div class="card-body">
-            {% for fee in fees %}
-            <div class="form-group">
+           {% for fee in fees %}
+             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4">
-                        <label>Accommodation</label>
+                        <label>From Date</label>
                     </div>
                     <div class="col-lg-8">
-                        <label>:{{fee.accommodation}}</label>
+                        <label> :{{fee.from_date}}</label>
+                    </div>
+                </div>
+            </div>
+             <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>To Date</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label> :{{fee.to_date}}</label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4">
-                        <label>Water</label>
+                        <label>Room Rent</label>
                     </div>
                     <div class="col-lg-8">
-                        <label>:{{fee.water}}</label>
+                        <label> :Rs. {{fee.room_rent}}</label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4">
-                        <label>Electricity</label>
+                        <label>Mess Bill</label>
                     </div>
                     <div class="col-lg-8">
-                        <label>:{{fee.electricity}}</label>
+                        <label> :Rs. {{fee.mess_bill}}</label>
                     </div>
                 </div>
             </div>
-            <div class="form-group">
+
+
+             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-4">
-                        <label>Caution Deposit</label>
+                        <label>Total</label>
                     </div>
                     <div class="col-lg-8">
-                        <label>:{{fee.caution_deposit}}</label>
+                        <label> :Rs. {{fee.get_total}}</label>
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <label>Security</label>
-                    </div>
-                    <div class="col-lg-8">
-                        <label>:{{fee.security}}</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <label>Mess</label>
-                    </div>
-                    <div class="col-lg-8">
-                        <label>:{{fee.mess}}</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <label>Others</label>
-                    </div>
-                    <div class="col-lg-8">
-                        <label>:{{fee.others}}</label>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="form-group">
                 <div class="row">
@@ -91,10 +74,10 @@
                     </div>
                     <div class="col-lg-8">
                         <label>
-                            {% if fee.payment_status == False %}
-                            <a href="{% url 'parent_pay_fee' fee.id %}" class=" btn btn-info" type="submit">PAY</a></label>
+                            {% if fee.status == False %}
+                            <a href="{% url 'do_payment_parent' fee.id %}" class=" btn btn-info" type="submit">PAY</a></label>
                         {% else %}
-                        <p class="btn btn-success">FEE PAID</p>
+                        <button class="btn btn-success">FEE PAID</button>
                         {% endif %}
                     </div>
                 </div>
@@ -106,10 +89,12 @@
         </div>
 
 
+        {% empty %}
+        <h3>No Pending Fee</h3>
         {% endfor %}
     </div>
 </div>
 
-</div>
+
 
 {% endblock %}

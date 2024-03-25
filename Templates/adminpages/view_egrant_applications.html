@@ -39,12 +39,12 @@
                     <td>{{egrant.yearly_income}}</td>
                     <td>
                         {% if egrant.approval_status == 0 %}
-                        <a style="color:green" href="{% url 'approve_egrant' egrant.id %}">Approve</a>/
-                        <a style="color:red" href="{% url 'reject_egrant' egrant.id %}">Reject</a>
+                        <a class="btn btn-primary" href="{% url 'approve_egrant' egrant.id %}">Approve</a>
+                        <a class="btn btn-warning" style="color:red" href="{% url 'reject_egrant' egrant.id %}">Reject</a>
                         {% elif egrant.approval_status == True %}
-                        <p>Approved</p>
+                        <button class="btn btn-success">Approved</button>
                         {% else %}
-                        <p>Rejected</p>
+                        <button class="btn btn-danger">Rejected</button>
                         {% endif %}
                     </td>
 

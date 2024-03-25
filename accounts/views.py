@@ -4,11 +4,21 @@ from django.shortcuts import render, redirect
 from accounts.forms import StudentSignUpForm, ParentSignUpForm, UserRegister
 from accounts.models import Student
 from adminmodule import views, studentviews, parentviews
+from adminmodule.forms import AddReviewForm
+from adminmodule.models import Review
 
 
 def home(request):
-    return render(request, 'home.html')
+    review = Review.objects.all().order_by('-id')[:6
+             ]
+    form = AddReviewForm()
+    if request.method == 'POST':
+        form = AddReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
 
+            return redirect('/')
+    return render(request, 'home.html',{'data':review,'form':form})
 
 def login_view(request):
     if request.method == 'POST':
@@ -60,7 +70,7 @@ def student_register(request):
     u_form = UserRegister()
     form = StudentSignUpForm()
     if request.method == 'POST':
-        form = StudentSignUpForm(request.POST)
+        form = StudentSignUpForm(request.POST,request.FILES)
         u_form = UserRegister(request.POST)
         if form.is_valid() and u_form.is_valid():
             user = u_form.save(commit=False)

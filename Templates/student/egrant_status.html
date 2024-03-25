@@ -1,6 +1,6 @@
 {% extends 'student/base.html' %}
 {% block student %}
-{% for message in messages %}
+
 
 
 <div class="col-lg-8">
@@ -85,12 +85,14 @@
                 </div>
             </div>
 
-
+{% endfor %}
         </div>
+
 
     </div>
 
-{% endfor %}
 </div>
+
+
 
 {% endblock %}

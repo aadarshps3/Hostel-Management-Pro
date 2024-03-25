@@ -34,7 +34,11 @@ class StudentSignUpForm(forms.ModelForm):
 
     class Meta:
         model = Student
-        fields = ('name', 'email', 'phone_no', 'address')
+        fields = ('name', 'email', 'phone_no', 'address', 'photo')
+        widget = {
+            'photo': forms.FileInput(attrs={'class': 'form-control'}),
+
+        }
 
     def clean_email(self):
         mail = self.cleaned_data["email"]
@@ -57,8 +61,6 @@ class StudentSignUpForm(forms.ModelForm):
             raise forms.ValidationError('This Phone Number already registered')
 
         return contact_no
-
-
 
 
 class ParentSignUpForm(forms.ModelForm):

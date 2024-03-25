@@ -41,7 +41,7 @@
 
 
 <!-- HEADER -->
-<header  style="background-color:#30419b;">
+<header style="background-color:#30419b;">
     <div class="container">
         <div class="row">
 
@@ -80,7 +80,8 @@
                 <li><a href="#about" class="smoothScroll">About Us</a></li>
                 <li><a href="#news" class="smoothScroll">Gallery</a></li>
                 <li><a href="#google-map" class="smoothScroll">Contact</a></li>
-                <li style="background-color:#30419b;"><a style="color:white" href="{% url 'accounts:login_view' %}">Login</a></li>
+                <li style="background-color:#30419b;"><a style="color:white" href="{% url 'accounts:login_view' %}">Login</a>
+                </li>
             </ul>
         </div>
 
@@ -112,7 +113,7 @@
 
 
 <!-- ABOUT -->
-<section id="about" >
+<section id="about">
     <div class="container" style="background-color:#dce7ff;">
         <div class="row">
 
@@ -223,7 +224,8 @@
                 <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
                      style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
 
-                        <img src="{% static 'home/images/home/campus.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+                    <img src="{% static 'home/images/home/campus.jpg' %}" class="img-responsive"
+                         style="width:450px; height:300px;" alt="">
 
                     <div class="team-info">
                         <h3></h3>
@@ -237,11 +239,12 @@
                 </div>
                 <br>
             </div>
-             <div class="col-md-4 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
                      style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
 
-                        <img src="{% static 'home/images/home/campus2.jpg' %}"  class="img-responsive" style="width:450px; height:300px;" alt="">
+                    <img src="{% static 'home/images/home/campus2.jpg' %}" class="img-responsive"
+                         style="width:450px; height:300px;" alt="">
 
                     <div class="team-info">
                         <h3></h3>
@@ -255,11 +258,12 @@
                 </div>
                 <br>
             </div>
-             <div class="col-md-4 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
                      style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
 
-                        <img src="{% static 'home/images/home/library.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+                    <img src="{% static 'home/images/home/library.jpg' %}" class="img-responsive"
+                         style="width:450px; height:300px;" alt="">
 
                     <div class="team-info">
                         <h3></h3>
@@ -273,11 +277,12 @@
                 </div>
                 <br>
             </div>
-             <div class="col-md-4 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
                      style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
 
-                        <img src="{% static 'home/images/home/mess2.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+                    <img src="{% static 'home/images/home/mess2.jpg' %}" class="img-responsive"
+                         style="width:450px; height:300px;" alt="">
 
                     <div class="team-info">
                         <h3></h3>
@@ -291,11 +296,12 @@
                 </div>
                 <br>
             </div>
-             <div class="col-md-4 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
                      style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
 
-                        <img src="{% static 'home/images/home/room2.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+                    <img src="{% static 'home/images/home/room2.jpg' %}" class="img-responsive"
+                         style="width:450px; height:300px;" alt="">
 
                     <div class="team-info">
                         <h3></h3>
@@ -309,11 +315,12 @@
                 </div>
                 <br>
             </div>
-             <div class="col-md-4 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="team-thumb wow fadeInUp animated" data-wow-delay="0.2s"
                      style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
 
-                        <img src="{% static 'home/images/home/room3.jpg' %}" class="img-responsive" style="width:450px; height:300px;" alt="">
+                    <img src="{% static 'home/images/home/room3.jpg' %}" class="img-responsive"
+                         style="width:450px; height:300px;" alt="">
 
                     <div class="team-info">
                         <h3></h3>
@@ -335,87 +342,134 @@
 
 <!-- MAKE AN APPOINTMENT -->
 
+<section id="appointment" data-stellar-background-ratio="3" style="background-position: 0px 328.594px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="footer-thumb">
+                    <h4 class="wow fadeInUp animated" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">Reviews</h4>
+                    <div class="latest-stories">
+<!--                        <div class="stories-image">-->
+<!--                          <img src="images/news-image.jpg" class="img-responsive" alt="">-->
+<!--                        </div>-->
+                        {% for i in data %}
+                        <div class="stories-info">
+                             <h5><strong>{{i.name}}</strong></h5>
+                          <p>{{i.review}}</p>
 
-<!-- GOOGLE MAP -->
-<section id="google-map">
-    <!-- How to change your own map point
-           1. Go to Google Maps
-           2. Click on your location point
-           3. Click "Share" and choose "Embed map" tab
-           4. Copy only URL and paste it within the src="" field below
-   -->
-    <!--    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4635.642452552428!2d75.09226409343!3d12.309380833430007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6c447c99122451be!2sKanhangad%20Government%20District%20Homoeo%20Hospital!5e0!3m2!1sen!2sin!4v1610079150572!5m2!1sen!2sin-->
-    <!--"-->
-    <!--            width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>-->
-    <!--</section>-->
-
-    <!-- FOOTER -->
-    <footer data-stellar-background-ratio="5">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-4 col-sm-4">
-                    <div class="footer-thumb">
-                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h4>
-                        <p>.</p>
-
-                        <div class="contact-info">
-                            <p><i class="fa fa-phone"></i> 0492-2937474</p>
-                            <!--                        <p><i class="fa fa-envelope-o"></i> <a href="#"></a></p>-->
-                        </div>
+                        </div><hr>
+                        {% endfor %}
                     </div>
-                </div>
 
-                <div class="col-md-4 col-sm-4">
 
                 </div>
+            </div>
 
-                <div class="col-md-4 col-sm-4">
-                    <div class="footer-thumb">
+            <div class="col-md-6 col-sm-6">
+                <!-- CONTACT FORM HERE -->
+                <form id="appointment-form" role="form" method="post" >{% csrf_token %}
+
+                    <!-- SECTION TITLE -->
+                    <div class="section-title wow fadeInUp animated" data-wow-delay="0.4s"
+                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <h2>Add Your Reviews</h2>
+                    </div>
+
+                    <div class="wow fadeInUp animated" data-wow-delay="0.8s"
+                         style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
+                        <div class="col-md-12 col-sm-12">
+                            <label for="id_name">Name</label>
+                            <input type="text" class="form-control" id="id_name" name="name" placeholder="Full Name" required>
+                        </div>
 
 
+                        <div class="col-md-12 col-sm-12">
+                            <label for="id_review">Review</label>
+                            <textarea class="form-control" rows="5" id="id_review" name="review"
+                                      placeholder="Type Your Review" required></textarea>
+                            <button type="submit" class="form-control" id="cf-submit" name="submit" style="background-color:#30419b;">Submit Button
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+
+
+<hr>
+<!-- FOOTER -->
+<footer data-stellar-background-ratio="5"  style="background-color:#f9f9f9;">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 col-sm-4">
+                <div class="footer-thumb">
+                    <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h4>
+                    <p>.</p>
+
+                    <div class="contact-info">
+                        <p><i class="fa fa-phone"></i> 0492-2937474</p>
+                        <!--                        <p><i class="fa fa-envelope-o"></i> <a href="#"></a></p>-->
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-12 col-sm-12 border-top">
-                    <div class="col-md-4 col-sm-4">
-                        <div class="footer-link">
-                            <a href="#home">Home</a>
-                            <a href="#news">Gallery</a>
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <div class="copyright-text">
-                            <p>Copyright &copy; 2021 Hostel Management System
-
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-2 text-align-center">
-                        <div class="angle-up-btn">
-                            <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i
-                                    class="fa fa-angle-up"></i></a>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 col-sm-4">
 
             </div>
+
+            <div class="col-md-4 col-sm-4">
+                <div class="footer-thumb">
+
+
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 border-top">
+                <div class="col-md-4 col-sm-4">
+                    <div class="footer-link">
+                        <a href="#home">Home</a>
+                        <a href="#news">Gallery</a>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="copyright-text">
+                        <p>Copyright &copy; 2021 Hostel Management System
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-sm-2 text-align-center">
+                    <div class="angle-up-btn">
+                        <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i
+                                class="fa fa-angle-up"></i></a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </footer>
+    </div>
+</footer>
 
 
-    <!-- SCRIPTS -->
-    <script src="{% static 'home/js/jquery.js' %}"></script>
-    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'home/js/jquery.sticky.js' %}"></script>
-    <script src="{% static 'home/js/jquery.stellar.min.js' %}"></script>
-    <script src="{% static 'home/js/wow.min.js' %}"></script>
-    <script src="{% static 'home/js/smoothscroll.js' %}"></script>
-    <script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'home/js/custom.js' %}"></script>
+<!-- SCRIPTS -->
+<script src="{% static 'home/js/jquery.js' %}"></script>
+<script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'home/js/jquery.sticky.js' %}"></script>
+<script src="{% static 'home/js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'home/js/wow.min.js' %}"></script>
+<script src="{% static 'home/js/smoothscroll.js' %}"></script>
+<script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'home/js/custom.js' %}"></script>
 
 </body>
 </html>

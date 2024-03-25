@@ -16,6 +16,8 @@ class Student(models.Model):
     email = models.EmailField()
     phone_no = models.CharField(max_length=10, null=True)
     approval_status = models.BooleanField(default=0)
+    photo = models.ImageField(upload_to='profile',null=True)
+    seen = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -30,6 +32,7 @@ class Parent(models.Model):
     email = models.EmailField()
     phone_no = models.CharField(max_length=10, null=True)
     approval_status = models.BooleanField(default=0)
+    seen = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

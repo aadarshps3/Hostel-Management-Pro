@@ -110,7 +110,6 @@
                             <li><a href="{% url 'add_hostel_detail' %}">Add Hostel Detail </a></li>
                             <li><a href="{% url 'view_hostel_detail' %}">View Hostel Detail</a></li>
 
-
                         </ul>
                     </li>
 
@@ -125,22 +124,19 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> Complaints <span class="float-right menu-arrow"><i
-                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                                class="icon-spread"></i><span> Complaints <span class="float-right menu-arrow">
+                            <i class="mdi mdi-chevron-right"></i></span></span>
+
+                                {% if request.session.complaint == 0 %}
+                                {% else %}
+                                <span class="badge badge-danger badge-pill float-right">{{request.session.complaint}}  </span>
+                            {% endif %}
+                          </a>
                         <ul class="submenu">
                             <li><a href="{% url 'view_complaint' %}">View Complaints</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> Income <span class="float-right menu-arrow"><i
-                                class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="{% url 'add_income_detail' %}">Add Income</a></li>
-                            <li><a href="{% url 'view_income_detail' %}">View Income</a></li>
 
-                        </ul>
-                    </li>
 
                     <li>
                         <a href="javascript:void(0);" class="waves-effect"><i
@@ -173,45 +169,46 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> Staff <span class="float-right menu-arrow"><i
-                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <a href="javascript:void(0);" class="waves-effect">
+                            <i class="icon-spread"></i><span> Staff <span class="float-right menu-arrow">
+                            <i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
                             <li><a href="{% url 'add_staff' %}">Add Staff</a></li>
                             <li><a href="{% url 'view_staff' %}">View Staff</a></li>
 
                         </ul>
                     </li>
-                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> E-grant <span class="float-right menu-arrow"><i
-                                class="mdi mdi-chevron-right"></i></span> </span></a>
-                        <ul class="submenu">
-                            <li><a href="{% url 'view_egrant_details' %}">View e-grant Applications</a></li>
 
-
-                        </ul>
-                    </li>
                      <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> Registration <span class="float-right menu-arrow"><i
+                        <a href="javascript:void(0);" class="waves-effect">
+                            <i class="icon-spread"></i><span> Registration <span class="float-right menu-arrow"><i
                                 class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
                             <li><a href="{% url 'view_registration_details' %}">View Registration</a></li>
                         </ul>
                     </li>
                      <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> Bookings <span class="float-right menu-arrow"><i
-                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <a href="javascript:void(0);" class="waves-effect">
+                            <i class="icon-spread"></i><span> Bookings <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span>
+                          {% if request.session.booking == 0 %}
+                                {% else %}
+                                <span class="badge badge-danger badge-pill float-right">{{request.session.booking}}  </span>
+                            {% endif %}
+                        </a>
                         <ul class="submenu">
                             <li><a href="{% url 'bookings' %}">View Bookings</a></li>
                         </ul>
                     </li>
                      <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i
-                                class="icon-spread"></i><span> Review <span class="float-right menu-arrow"><i
-                                class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <a href="javascript:void(0);" class="waves-effect">
+                            <i class="icon-spread"></i><span> Review <span class="float-right menu-arrow"><i
+                                class="mdi mdi-chevron-right"></i></span> </span>
+                          {% if request.session.review == 0 %}
+                                {% else %}
+                                <span class="badge badge-danger badge-pill float-right">{{request.session.review}}  </span>
+                            {% endif %}
+                        </a>
                         <ul class="submenu">
                             <li><a href="{% url 'review' %}">View Reviews</a></li>
                         </ul>

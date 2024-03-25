@@ -18,13 +18,13 @@
                 <tr>
                     <th scope="col">SINo</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Accommodation</th>
-                    <th scope="col">Electricity</th>
-                    <th scope="col">Caution_deposit</th>
-                    <th scope="col">Security</th>
-                    <th scope="col">Mess</th>
-                    <th scope="col">Others</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">From Date</th>
+                    <th scope="col">To Date</th>
+                    <th scope="col">Room Rent</th>
+                    <th scope="col">Mess Bill</th>
+                    <th scope="col">Total</th>
+
+
                 </tr>
                 </thead>
                 <tbody>
@@ -32,21 +32,17 @@
                 <tr>
 
                     <td>{{forloop.counter}}</td>
-                    <td>{{fee.name}}</td>
-                    <td>{{fee.accommodation}}</td>
-                    <td>{{fee.electricity}}</td>
-                    <td>{{fee.caution_deposit}}</td>
-                    <td>{{fee.security}}</td>
-                    <td>{{fee.mess}}</td>
-                    <td>{{fee.others}}</td>
-                    <td>{% if fee.payment_status == True %}
-                        <button class="btn btn-success">Fee Paid</button>
-                        {% else %}
-                        <button class="btn btn-warning">Payment Pending </button>
+                    <td>{{fee.student}}</td>
+                    <td>{{fee.from_date}}</td>
+                    <td>{{fee.to_date}}</td>
+                    <td>{{fee.room_rent}}</td>
+                    <td>{{fee.mess_bill}}</td>
+                    <td>{{fee.get_total}}</td>
 
-                        {% endif %}
-                    </td>
+
                 </tr>
+
+
                 {% endfor %}
 
                 </tbody>

@@ -18,6 +18,8 @@
                 <tr>
                     <th scope="col">SINo</th>
                     <th scope="col">Student Name</th>
+                    <th scope="col">Fee from</th>
+                    <th scope="col">Fee To</th>
                     <th scope="col">Paid By</th>
                     <th scope="col"> Paid Date</th>
                     <th scope="col">Payment</th>
@@ -27,15 +29,17 @@
                 </thead>
                 <tbody>
                 {% for payment in payments %}
-                {% if payment.payment_status == True %}
+
                 <tr>
                     <td>{{forloop.counter}}</td>
-                    <td>{{payment.name}}</td>
+                    <td>{{payment.student}}</td>
+                    <td>{{payment.from_date}}</td>
+                    <td>{{payment.to_date}}</td>
                     <td>{{payment.paid_by}}</td>
                     <td>{{payment.paid_date}}</td>
                     <td>{{payment.payment}}</td>
                 </tr>
-                  {% endif %}
+
                 {% endfor %}
 
 

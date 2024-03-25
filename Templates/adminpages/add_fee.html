@@ -18,7 +18,7 @@
                 <h3 class="text-center"></h3>
             </div>
 
-            <form method="post" novalidate="novalidate">
+            <form method="post" id="form" data-bill-url="{% url 'ajax_load_bill' %}"> {% csrf_token %}
                 {% csrf_token %}
 
                 <div class="form-group ">
@@ -32,5 +32,37 @@
 
 </div>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_to_date").change(function () {
+        const url = $("#form").attr("data-bill-url");
 
+        const to_date = $(this).val();
+       const from_date = document.getElementById("id_from_date").value;
+       const studentId = document.getElementById("id_student").value;
+
+
+
+        $.ajax({
+            url: url,
+            data: {
+                'to_date': to_date,
+                'from_date': from_date,
+                'studentId': studentId,
+
+            },
+            success: function (data) {
+
+                $( "#id_mess_bill" ).val(data.mess_bill);
+                $( "#id_room_rent" ).val(data.room_rent);
+
+
+                }
+
+        });
+
+    });
+
+
+</script>
 {% endblock %}

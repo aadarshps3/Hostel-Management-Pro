@@ -18,26 +18,21 @@
                 <tr>
                     <th scope="col">SINo</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Initial Day</th>
-                    <th scope="col">Final Day</th>
-                    <th scope="col">Percentage</th>
+
+                    <th scope="col">View</th>
 
 
                 </tr>
                 </thead>
                 <tbody>
                 {% for attendance in attendances %}
-                <tr>
+                        <tr>
+                            <td>{{forloop.counter }}</td>
+                            <td>{{ attendance}}</td>
+                            <td><a href="{% url 'day_attendance' attendance %}">View</a></td>
 
-                    <td>{{forloop.counter}}</td>
-                    <td>{{attendance.name}}</td>
-                    <td>{{attendance.initial_day}}</td>
-                    <td>{{attendance.final_day}}</td>
-                    <td>{{attendance.percentage}}</td>
-
-
-                </tr>
-                {% endfor %}
+                        </tr>
+                        {% endfor %}
 
                 </tbody>
             </table>
